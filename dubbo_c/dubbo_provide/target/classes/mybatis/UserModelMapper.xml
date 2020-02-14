@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.UserModelMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.model.UserModel" >
+    <id column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="userphone" property="userphone" jdbcType="VARCHAR" />
+    <result column="userpassword" property="userpassword" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="userimg" property="userimg" jdbcType="VARCHAR" />
+    <result column="menber" property="menber" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="jifen" property="jifen" jdbcType="VARCHAR" />
+    <result column="addressjibie" property="addressjibie" jdbcType="INTEGER" />
+    <result column="yue" property="yue" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    userid, userphone, userpassword, username, userimg, menber, address, jifen, addressjibie, 
+    yue
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_user
+    where userid = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jk.model.UserModel" >
+    insert into t_user (userid, userphone, userpassword, 
+      username, userimg, menber, 
+      address, jifen, addressjibie, 
+      yue)
+    values (#{userid,jdbcType=INTEGER}, #{userphone,jdbcType=VARCHAR}, #{userpassword,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR}, #{userimg,jdbcType=VARCHAR}, #{menber,jdbcType=INTEGER}, 
+      #{address,jdbcType=VARCHAR}, #{jifen,jdbcType=VARCHAR}, #{addressjibie,jdbcType=INTEGER}, 
+      #{yue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jk.model.UserModel" >
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="userphone != null" >
+        userphone,
+      </if>
+      <if test="userpassword != null" >
+        userpassword,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="userimg != null" >
+        userimg,
+      </if>
+      <if test="menber != null" >
+        menber,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="jifen != null" >
+        jifen,
+      </if>
+      <if test="addressjibie != null" >
+        addressjibie,
+      </if>
+      <if test="yue != null" >
+        yue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="userphone != null" >
+        #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="userpassword != null" >
+        #{userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userimg != null" >
+        #{userimg,jdbcType=VARCHAR},
+      </if>
+      <if test="menber != null" >
+        #{menber,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="jifen != null" >
+        #{jifen,jdbcType=VARCHAR},
+      </if>
+      <if test="addressjibie != null" >
+        #{addressjibie,jdbcType=INTEGER},
+      </if>
+      <if test="yue != null" >
+        #{yue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jk.model.UserModel" >
+    update t_user
+    <set >
+      <if test="userphone != null" >
+        userphone = #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="userpassword != null" >
+        userpassword = #{userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userimg != null" >
+        userimg = #{userimg,jdbcType=VARCHAR},
+      </if>
+      <if test="menber != null" >
+        menber = #{menber,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="jifen != null" >
+        jifen = #{jifen,jdbcType=VARCHAR},
+      </if>
+      <if test="addressjibie != null" >
+        addressjibie = #{addressjibie,jdbcType=INTEGER},
+      </if>
+      <if test="yue != null" >
+        yue = #{yue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jk.model.UserModel" >
+    update t_user
+    set userphone = #{userphone,jdbcType=VARCHAR},
+      userpassword = #{userpassword,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      userimg = #{userimg,jdbcType=VARCHAR},
+      menber = #{menber,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      jifen = #{jifen,jdbcType=VARCHAR},
+      addressjibie = #{addressjibie,jdbcType=INTEGER},
+      yue = #{yue,jdbcType=VARCHAR}
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>
