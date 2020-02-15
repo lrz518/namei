@@ -1,6 +1,7 @@
 package com.jk.model;
 
 public class CommodityModel {
+    /*这是商品到实体类*/
    /* T_commodity  商品表
     commodity_id       商品ID
     commodity_img      商品图片
