@@ -1,9 +1,12 @@
 package com.jk.model;
 
-public class UserModel {
+import java.io.Serializable;
+
+public class UserModel   implements Serializable {
+    private static final long serialVersionUID = 1L;
     private Integer userid;
 
-    private String userphone;
+    private String useriphone;
 
     private String userpassword;
 
@@ -11,7 +14,7 @@ public class UserModel {
 
     private String userimg;
 
-    private Integer menber;
+    private Integer member;
 
     private String address;
 
@@ -29,12 +32,24 @@ public class UserModel {
         this.userid = userid;
     }
 
-    public String getUserphone() {
-        return userphone;
+    public void setUseriphone(String useriphone) {
+        this.useriphone = useriphone;
     }
 
-    public void setUserphone(String userphone) {
-        this.userphone = userphone == null ? null : userphone.trim();
+    public void setMember(Integer member) {
+        this.member = member;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getUseriphone() {
+        return useriphone;
+    }
+
+    public Integer getMember() {
+        return member;
     }
 
     public String getUserpassword() {
@@ -61,13 +76,7 @@ public class UserModel {
         this.userimg = userimg == null ? null : userimg.trim();
     }
 
-    public Integer getMenber() {
-        return menber;
-    }
 
-    public void setMenber(Integer menber) {
-        this.menber = menber;
-    }
 
     public String getAddress() {
         return address;

@@ -14,7 +14,7 @@
     <result column="yue" property="yue" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    userid, userphone, userpassword, username, userimg, menber, address, jifen, addressjibie, 
+    userid, useriphone, userpassword, username, userimg, menber, address, jifen, addressjibie,
     yue
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -37,14 +37,14 @@
       #{address,jdbcType=VARCHAR}, #{jifen,jdbcType=VARCHAR}, #{addressjibie,jdbcType=INTEGER}, 
       #{yue,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.jk.model.UserModel" >
+  <insert id="register" parameterType="com.jk.model.UserModel" >
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userid != null" >
         userid,
       </if>
-      <if test="userphone != null" >
-        userphone,
+      <if test="useriphone != null" >
+        useriphone,
       </if>
       <if test="userpassword != null" >
         userpassword,
@@ -55,8 +55,8 @@
       <if test="userimg != null" >
         userimg,
       </if>
-      <if test="menber != null" >
-        menber,
+      <if test="member != null" >
+        member,
       </if>
       <if test="address != null" >
         address,
@@ -75,8 +75,8 @@
       <if test="userid != null" >
         #{userid,jdbcType=INTEGER},
       </if>
-      <if test="userphone != null" >
-        #{userphone,jdbcType=VARCHAR},
+      <if test="useriphone != null" >
+        #{useriphone,jdbcType=VARCHAR},
       </if>
       <if test="userpassword != null" >
         #{userpassword,jdbcType=VARCHAR},
@@ -87,8 +87,8 @@
       <if test="userimg != null" >
         #{userimg,jdbcType=VARCHAR},
       </if>
-      <if test="menber != null" >
-        #{menber,jdbcType=INTEGER},
+      <if test="member != null" >
+        #{member,jdbcType=INTEGER},
       </if>
       <if test="address != null" >
         #{address,jdbcType=VARCHAR},
