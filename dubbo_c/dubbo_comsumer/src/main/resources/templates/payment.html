@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{/js/jquery.min1.10.2.js}" src="../static/js/jquery.min1.10.2.js"></script>
+    <link th:href="@{/js/bootstrap3/css/bootstrap.css}" href="../static/js/bootstrap3/css/bootstrap.css"
+          rel="stylesheet"/>
+    <link th:href="@{/js/bootstrap-table/bootstrap-table.css}" href="../static/js/bootstrap-table/bootstrap-table.css"
+          rel="stylesheet"/>
+    <script th:src="@{/js/bootstrap-table/bootstrap-table.js}"
+            src="../static/js/bootstrap-table/bootstrap-table.js"></script>
+    <script th:src="@{/js/bootstrap-table/locale/bootstrap-table-zh-CN.js}"
+            src="../static/js/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <script th:src="@{/js/bootstrap3/js/bootstrap.js}" src="../static/js/bootstrap3/js/bootstrap.js"></script>
+    <script th:src="@{/js/bootstrap-bootbox/bootbox.js}" src="../static/js/bootstrap-bootbox/bootbox.js"></script>
+</head>
+<body>
+<div class="alert alert-warning alert-dismissible" role="alert">
+    <a href="../user/toAaa">返回</a>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong></strong> 如果您的订单无法支付，是因为您创建订单时选择支付的微信/支付宝账号和订单详情页选择支付的微信/支付宝账户不一致，您可以继续使用创建订单时选择支付的微信/支付宝账户支付或重新下单支付。
+
+</div>
+
+</body>
+</html>
