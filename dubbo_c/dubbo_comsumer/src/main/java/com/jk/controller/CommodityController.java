@@ -297,7 +297,7 @@ public class CommodityController {
     }
     /*跳转商品页面*/
     @RequestMapping("tiaoshangp")
-    public @ResponseBody  ModelAndView tiaoshangp(Integer id){
+    public @ResponseBody  ModelAndView tiaoshangp(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("classification");
         return  modelAndView;
