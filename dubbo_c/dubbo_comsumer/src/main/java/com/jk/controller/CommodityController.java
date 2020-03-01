@@ -295,6 +295,13 @@ public class CommodityController {
     List<CommonModel> queryshangp(Integer id) {
         return entryService.queryshangp(id);
     }
+    /*跳转商品页面*/
+    @RequestMapping("tiaoshangp")
+    public @ResponseBody  ModelAndView tiaoshangp(Integer id){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("classification");
+        return  modelAndView;
+    }
 }
 
 
