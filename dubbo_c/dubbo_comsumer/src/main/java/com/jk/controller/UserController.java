@@ -2,6 +2,8 @@ package com.jk.controller;
 
 
 
+
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSONObject;
 import com.jk.model.UserModel;
 import com.jk.service.UserService;
@@ -9,9 +11,12 @@ import com.jk.util.CheckSumBuilder;
 import com.jk.util.HttpClientUtil;
 import com.jk.util.Md5Util;
 
-import jdk.nashorn.internal.ir.annotations.Reference;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+
+
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,7 +44,8 @@ public class UserController {
 
     //注册账号
     @RequestMapping("register")
-    public  @ResponseBody
+    @ResponseBody
+    public
     void   register(UserModel  userModel){
          userModel.setUserimg(null);
          userModel.setMember(1);
@@ -52,7 +58,8 @@ public class UserController {
     }
     //注册验证账号是否存在
     @RequestMapping("checkUser")
-    public  @ResponseBody
+    @ResponseBody
+    public
     String  checkUser(String  useriphone){
         UserModel  userIphone = userService.findUserPhone(useriphone);
         if(userIphone  != null){
@@ -63,7 +70,8 @@ public class UserController {
 
     //短信验证码登陆
     @RequestMapping("smLogin")
-    public  @ResponseBody
+    @ResponseBody
+    public
     Map  smLogin(String useriphone,String  checkcode,HttpSession session){
         HashMap<String, Object> result = new  HashMap<>();
         //判断缓存中是否有该账号的验证码
@@ -87,7 +95,8 @@ public class UserController {
     }
     //短信验证码下发
     @RequestMapping("sendSmsCode")
-    public @ResponseBody
+    @ResponseBody
+    public
     Map sendSmsCode(String useriphone){
         HashMap<String, Object> result = new  HashMap<>();
         try{
@@ -133,7 +142,8 @@ public class UserController {
     }
     //验证登陆手机号/密码
     @RequestMapping("login")
-    public @ResponseBody
+    @ResponseBody
+    public
     Map loginUser(UserModel userModel, HttpSession session) {
     HashMap<String, Object> result = new HashMap<>();
     UserModel  userInfo = userService.findUserPhone(userModel.getUseriphone());

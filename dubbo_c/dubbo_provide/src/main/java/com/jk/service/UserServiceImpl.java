@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
-@Service(interfaceClass = UserService.class)
+@Service(interfaceClass = UserService.class,timeout = 100000)
 @Component
 public class UserServiceImpl implements UserService {
 
