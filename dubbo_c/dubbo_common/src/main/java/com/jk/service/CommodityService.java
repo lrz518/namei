@@ -5,50 +5,21 @@ import com.jk.model.CommonModel;
 import java.util.List;
 
 public interface CommodityService {
-    /*查看特价商品*/
-    List<CommonModel> querycommodityT();
 
-    List<CommonModel> querydaily();
 
-    List<CommonModel> queryPopular();
-
-    List<CommonModel> queryThisweek();
-
-    List<CommonModel> queryListweek();
+    List<CommonModel> queryshangp(Integer id);
 
     List<CommonModel> queryFresh();
 
-    List<CommonModel> queryRecommend();
-
     List<CommonModel> queryVegetables();
 
-    List<CommonModel> queryReVegetables();
+    List<CommonModel> querygift();
 
-    List<CommonModel> querybreakfast();
+    List<CommonModel> querySnacks();
 
-    List<CommonModel> queryRebreakfast();
+    List<CommonModel> queryWine();
 
-    List<CommonModel> querysnacks();
+    List<CommonModel> querysuger();
 
-    List<CommonModel> querychips();
-
-    List<CommonModel> querywine();
-
-    List<CommonModel> querydrinks();
-
-    List<CommonModel> querygiftbox();
-
-    List<CommonModel> queryolidaygift();
-
-    List<CommonModel> queryRedaily();
-
-    List<CommonModel> querysugar();
-
-    List<CommonModel> querySoftsweets();
-
-    List<CommonModel> queryWash();
-
-    List<CommonModel> queryCooked();
-
-    List<CommonModel> queryshangp(Integer id);
+    List<CommonModel> queryDrinks();
 }

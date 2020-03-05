@@ -15,28 +15,8 @@ public class CommodityServiceImpl implements CommodityService {
     private CommonModelMapper commonModelMapper;
 
     @Override
-    public List<CommonModel> querycommodityT() {
-        return commonModelMapper.querycommodityT();
-    }
-
-    @Override
-    public List<CommonModel> querydaily() {
-        return commonModelMapper.querydaily();
-    }
-
-    @Override
-    public List<CommonModel> queryPopular() {
-        return  commonModelMapper.queryPopular();
-    }
-
-    @Override
-    public List<CommonModel> queryThisweek() {
-        return commonModelMapper.queryThisweek();
-    }
-
-    @Override
-    public List<CommonModel> queryListweek() {
-        return commonModelMapper.queryListweek();
+    public List<CommonModel> queryshangp(Integer id) {
+        return commonModelMapper.queryshangp(id);
     }
 
     @Override
@@ -45,87 +25,32 @@ public class CommodityServiceImpl implements CommodityService {
     }
 
     @Override
-    public List<CommonModel> queryRecommend() {
-        return commonModelMapper.queryRecommend();
-    }
-
-    @Override
     public List<CommonModel> queryVegetables() {
         return commonModelMapper.queryVegetables();
     }
 
     @Override
-    public List<CommonModel> queryReVegetables() {
-        return  commonModelMapper.queryReVegetables();
+    public List<CommonModel> querygift() {
+        return commonModelMapper.querygift();
     }
 
     @Override
-    public List<CommonModel> querybreakfast() {
-        return  commonModelMapper.querybreakfast();
+    public List<CommonModel> querySnacks() {
+        return  commonModelMapper.querySnacks();
     }
 
     @Override
-    public List<CommonModel> queryRebreakfast() {
-        return  commonModelMapper.queryRebreakfast();
+    public List<CommonModel> queryWine() {
+        return commonModelMapper.queryWine();
     }
 
     @Override
-    public List<CommonModel> querysnacks() {
-        return commonModelMapper.querysnacks();
+    public List<CommonModel> querysuger() {
+        return commonModelMapper.querysuger();
     }
 
     @Override
-    public List<CommonModel> querychips() {
-        return  commonModelMapper.querychips();
-    }
-
-    @Override
-    public List<CommonModel> querywine() {
-        return commonModelMapper.querywine();
-    }
-
-    @Override
-    public List<CommonModel> querydrinks() {
-        return commonModelMapper.querydrinks();
-    }
-
-    @Override
-    public List<CommonModel> querygiftbox() {
-        return commonModelMapper.querygiftbox();
-    }
-
-    @Override
-    public List<CommonModel> queryolidaygift() {
-        return commonModelMapper.queryolidaygift();
-    }
-
-    @Override
-    public List<CommonModel> queryRedaily() {
-        return commonModelMapper.queryRedaily();
-    }
-
-    @Override
-    public List<CommonModel> querysugar() {
-        return commonModelMapper.querysugar();
-    }
-
-    @Override
-    public List<CommonModel> querySoftsweets() {
-        return commonModelMapper.querySoftsweets();
-    }
-
-    @Override
-    public List<CommonModel> queryWash() {
-        return  commonModelMapper.queryWash();
-    }
-
-    @Override
-    public List<CommonModel> queryCooked() {
-        return commonModelMapper.queryCooked();
-    }
-
-    @Override
-    public List<CommonModel> queryshangp(Integer id) {
-        return commonModelMapper.queryshangp(id);
+    public List<CommonModel> queryDrinks() {
+        return  commonModelMapper.queryDrinks();
     }
 }
