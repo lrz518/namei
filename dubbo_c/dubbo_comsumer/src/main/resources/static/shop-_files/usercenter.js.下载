@@ -1,0 +1,786 @@
+/** JS for user center module */
+$(document).ready(function() {
+	for(var i =0; i<menuList.length; i++){
+    	bindPage(menuList[i].name, menuList[i].url);
+	}
+});
+
+var menuList =[
+	       	    {name: "usercenterhome",url:"/i/uchome", title: "个人中心首页" },
+	       	    {name: "consultOrder",url:"/consultOrder/query", title: "我的询单"},
+	       	    {name: "myorder",url:"/myorder?uc=uc", title: "我的订单"},
+				{name: "myCoupon",url:"/i/coupon?couPro=shop", title: "我的优惠券"},
+	       		{name: "prodcomment",url:"/p/prodcomment", title: "商品评论"},
+	       		{name: "prodcons",url:"/prodcons", title: "商品咨询"},
+	       		{name: "accusation",url:"/i/accusation", title: "举报管理"},
+	       		{name: "toAccusation",url:"/i/accusation/", title: "举报管理"},
+	       		{name: "favoriteShop",url:"/i/favoriteShop", title: "店铺收藏"},
+	       		{name: "myfavourite",url:"/favourite", title: "商品收藏"},
+	       		{name: "inbox",url:"/i/inbox", title: "收件箱"},
+	       		{name: "outbox",url:"/p/outbox", title: "发件箱"},
+	       		{name: "systemMessages",url:"/i/systemMessages", title: "系统通知"},
+	       		{name: "sendMessage",url:"/p/sendMessage", title: "发消息"},
+	       		{name: "personinfo",url:"/i/user", title: "个人资料"},
+	       		{name: "security",url:"/i/security", title: "安全中心"},
+	       		{name: "receiveaddress",url:"/i/receiveaddress", title: "收货地址"},
+	       		/*{name: "accountBinding",url:"/i/accountBinding", title: "登陆绑定"},*/
+	       		{name: "adddeposit",url:"/p/predeposit/recharge_add", title: "预存款充值"},
+	       		{name: "mydeposit",url:"/p/predeposit/account_balance", title: "我的预存款"},
+	       		{name: "myCoin",url:"/p/predeposit/coin", title: "我的金币"},
+	       		{name: "expensesRecord",url:"/expensesRecord", title: "消费记录"},
+	       		{name: "browseHistory",url:"/i/browseHistory", title: "浏览历史"},
+	       		{name: "myidcards",url:"/p/realNameAuth/list", title: "我的实名认证"},
+	       		{name: "myReserve",url:"/p/myreserve", title: "我的预约"},
+	       		{name: "myDemand",url:"/demand/demandInfoList", title: "需求信息"},
+	       		{name: "demandCertification",url:"/demandCertification/renewalFee", title: "认证续费"},
+	       		{name: "demanderCertification",url:"/i/demanderCertification", title: "采购认证"},
+	       		{name: "serviceOrderList",url:"/demandSubscribe/serviceOrderList", title: "认证购买记录"},
+	       		{name: "refundReturn",url:"/refundReturnList/1", title: "退款退货"},
+	           ]
+
+var userCenter = {
+
+	changeNavLocation : function(text) {
+		$("#subNavLocation").html(text);
+	},
+
+	changeSubNavClass : function(jqElement) {
+		jqElement.addClass("focus");
+	},
+
+	changeSubTab: function(name){
+  	  	var jqElement = $("#" + name);
+		changeSubNavClass(jqElement);
+		for ( var int = 0; int < menuList.length; int++) {
+			if(name == menuList[int].name){
+				$("#subNavLocation").html(menuList[int].title);
+			}
+		}
+
+	},
+
+	loadPageByAjax : function(url) {
+		window.location.href = contextPath + url
+	},
+
+	refreshPageByAjax : function(url, JsonData) {
+		$.post(contextPath + url, JsonData, function(data) {
+			$('#rightContent').html(data);
+		});
+	}
+}
+
+var myOrder = {
+	bindMyOrderContentPage : function() {
+		$("#btn_keyword").click(function() {
+			if ($("#ip_keyword").val() == '商品名称、订单编号') {
+				$("#ip_keyword").val("");
+			}
+			myOrder.queryOrders();
+		});
+		$("#orderType").change(function() {
+			myOrder.queryOrders();
+		});
+		$("#orderActiveStatus").change(function() {
+			myOrder.queryOrders();
+		});
+		$("#ip_keyword").focus(function() {
+			$(this).select();
+			if ($(this).val() == '商品名称、订单编号') {
+				$(this).val("");
+			}
+		});
+	},
+
+	queryOrders : function() {
+		var url = "/p/order?uc=uc";
+		url = url + "&orderType=" + $("#orderType").val()
+				+ "&orderActiveStatus=" + $("#orderActiveStatus").val();
+		var kwText = $("#ip_keyword").val();
+		if(kwText == "商品名称、订单编号"){
+			kwText="";
+		}
+
+		if (kwText != "" ) {
+			var kwType = 0;
+			var reg = /^(\d{22,})$/;
+			if (reg.test(kwText)) {
+				kwType = 1;
+			}
+			url = url + "&kwType=" + kwType;
+		}
+		userCenter.refreshPageByAjax(url, {
+			"kwText" : kwText
+		});
+
+	}
+}
+
+var mayFav = {
+		bindPageAction:function(){
+		this.bindCheckAllBox();
+		this.bindDeleteBtn();
+		this.bindClearAllBtn();
+	},
+	bindCheckAllBox : function() {
+		$("#selectAllCheck").click(function() {
+			var nextCheck = this.checked;
+			$("input[name='favCheck']").each(function() {
+				this.checked = nextCheck;
+			});
+		});
+
+	},
+	bindDeleteBtn : function() {
+		$("#delBtn").click(function() {
+			var selectedFavId = "";
+			$("input[name='favCheck']").each(
+					function() {
+						if (this.checked == true) {
+							selectedFavId = (selectedFavId == "" ? this.id:selectedFavId+ ";"+ this.id);
+								}
+				});
+							if (selectedFavId == "") {
+								art.dialog.tips("请先选择您要删除的信息，再点击删除按钮!");
+								return false;
+							}
+
+							art.dialog.confirm("您确定要删除选中的信息吗？", function () {
+								var jsonData = {
+										"selectedFavs" : selectedFavId
+									};
+									var url = contextPath + "/delfavourite";
+									$.post(url, jsonData, function(data) {
+										$("#myfavourite").click();
+									});
+							});
+		});
+	},
+	bindClearAllBtn : function() {
+		$("#clrBtn").click(function() {
+			art.dialog.confirm("您确定要清空所有的收藏信息吗？", function () {
+				var url = contextPath + "/clrfavourite";
+				$.get(url, null, function(data) {
+					$("#myfavourite").click();
+				});
+			});
+      });
+
+	}
+
+}
+
+var security = {
+		doExecute : function(secLevel, phoneVerifn) {
+			userCenter.changeSubTab("security");
+			if(1 == secLevel){
+				$("#secLevel").html("很危险");
+				$("#secLevel").attr("style","color:#B22222");
+				$(".icon-rank04").attr("style","background-position:0 -30px");
+			}else if(2 == secLevel){
+				$("#secLevel").html("中级");
+				$("#secLevel").attr("style","color:#FF6600");
+				$(".icon-rank04").attr("style","background-position:0 -45px");
+			}else if(3 == secLevel){
+				$("#secLevel").html("高级");
+				$("#secLevel").attr("style","color:#009900");
+				$(".icon-rank04").attr("style","background-position:0 -60px");
+			}else if(4 == secLevel){
+				$("#secLevel").html("很安全");
+				$("#secLevel").attr("style","color:#009900");
+				$(".icon-rank04").attr("style","background-position:0 -75px");
+			}
+
+			this.bindUpdatePassword(secLevel);
+			this.bindVerifyMail(secLevel);
+			this.bindUpdateMobile(secLevel);
+			this.bindUpdatePaymentPassword(secLevel, phoneVerifn);
+		},
+		bindUpdatePassword : function(secLevel) {
+			var jqElement = $("#toUpdatePassword");
+			jqElement.unbind("click").click(function() {
+				userCenter.loadPageByAjax("/i/establishIdentity/toUpdatePassword/"+secLevel);
+				userCenter.changeSubNavClass($("#security"));
+				userCenter.changeNavLocation("更改密码");
+			});
+		},
+		bindVerifyMail : function(secLevel) {
+			var jqElement = $("#toUpdateMail");
+			jqElement.unbind("click").click(function() {
+				userCenter.loadPageByAjax("/i/establishIdentity/toUpdateMail/"+secLevel);
+				userCenter.changeSubNavClass($("#security"));
+				userCenter.changeNavLocation("邮箱验证");
+			});
+		},
+		bindUpdateMobile : function(secLevel) {
+			var jqElement = $("#toUpdateMobile");
+			jqElement.unbind("click").click(function() {
+				userCenter.loadPageByAjax("/i/establishIdentity/toUpdateMobile/"+secLevel);
+				userCenter.changeSubNavClass($("#security"));
+				userCenter.changeNavLocation("手机验证");
+			});
+		},
+		bindUpdatePaymentPassword : function(secLevel, phoneVerifn) {
+			var jqElement = $("#toUpdatePaymentpassword");
+			jqElement.unbind("click").click(function() {
+				if(1 == phoneVerifn){
+				userCenter.loadPageByAjax("/i/establishIdentity/toUpdatePaymentpassword/"+secLevel);
+				userCenter.changeSubNavClass($("#security"));
+				userCenter.changeNavLocation("支付密码");
+				}else{
+					alert("请先验证手机");
+				}
+			});
+		}
+
+	}
+
+var passwordVerification = {
+		doExecute : function(toPage, mailVerifn, phoneVerifn, paypassVerifn) {
+			userCenter.changeSubTab("security");
+			if(toPage =="toUpdateMail"){
+				if(mailVerifn == 0){
+					$(".o-mt").html("<h2>验证邮箱</h2>");
+					$(".fore2").html("2.验证邮箱<b></b>");
+				}else{
+					$(".o-mt").html("<h2>修改邮箱</h2>");
+					$(".fore2").html("2.修改邮箱<b></b>");
+				}
+			}else if(toPage =="toUpdateMobile"){
+				if(phoneVerifn ==0){
+					$(".o-mt").html("<h2>验证手机</h2>");
+					$(".fore2").html("2.验证手机<b></b>");
+				}else{
+					$(".o-mt").html("<h2>修改手机</h2>");
+					$(".fore2").html("2.修改手机<b></b>");
+				}
+			}else if(toPage =="toUpdatePaymentpassword"){
+				if(paypassVerifn ==0){
+					$(".o-mt").html("<h2>验证支付密码</h2>");
+					$(".fore2").html("2.验证支付密码<b></b>");
+				}else{
+					$(".o-mt").html("<h2>修改支付密码</h2>");
+					$(".fore2").html("2.修改支付密码<b></b>");
+				}
+			}
+
+			$("#password").bind('blur', function () {
+				if(!passwordVerification.comparisonPassword()){
+					$("#password_error").text("登录密码错误，请新输入");
+					$("#password_error").show();
+				}
+			});
+
+			$("#password").bind('focus', function () {
+					$("#password_error").hide();
+			});
+		},
+		//对比密码
+		comparisonPassword: function(){
+			var result ;
+			$.ajax({
+				url: contextPath + "/i/passwordComparison",
+				data:{"password":$("#password").val()},
+				type:'post',
+				dataType : 'json',
+				async : false,
+				error: function(jqXHR, textStatus, errorThrown) {
+			 		layer.msg("系统网络异常，请联系管理员");
+				},
+				success:function(retData){
+					result = retData;
+				}
+				});
+			return result;
+		},
+
+		//前往修改页面
+		validCode: function (toPage){
+			var passwordError = $("#password_error");
+			if(validateRandNum(contextPath))
+			{
+				if(passwordVerification.comparisonPassword()){
+					var form1 = $("#passwordForm1");
+					form1.attr("action", contextPath + "/i/"+toPage);
+					form1.submit();
+				}else{
+					passwordError.show();
+					passwordError.text("登录密码错误，请重新输入");
+					document.getElementById("password").value="";
+					document.getElementById("randNum").value="";
+				 	changeRandImg(contextPath);
+				}
+			}else{
+				 passwordError.hide();
+			}
+
+		}
+}
+
+var updateMobile = {
+		doExecute : function() {
+			userCenter.changeSubTab("security");
+			$("#userMobile").bind('focus', function () {
+				$("#mobiletext").show();
+				$("#mobile_error").hide();
+			});
+
+			$("#code_error").bind('focus', function () {
+				$("#code_error").hide();
+			});
+
+			//刷新验证码
+			changeRandImg(contextPath);
+			$("#sendMobileCode").bind("click",function(){
+				var mobile = $("#userMobile").val();
+				var mobileError = $("#mobile_error");
+				$("#mobiletext").hide();
+				if(isPhone(mobile)){
+					if(updateMobile.checkPhone()){
+						timer = updateMobile.sendSMSCode();
+					}else{
+						mobileError.show();
+						mobileError.text("该手机号码已被使用，请更换其他手机号码");
+					}
+				}else{
+					mobileError.show();
+					mobileError.text("请输入正确的手机格式");
+				}
+			});
+
+			updateMobile.calRemainTime();
+		},
+
+		//发送验证短信
+		sendSMSCode: function (){
+			var timer;
+			var randNum = $("#randNum").val();
+			$.ajax({
+				url: contextPath + "/i/verifyMessage",
+				data:{"mobile":$("#userMobile").val(), "securityCode":securityCode,"randNum":randNum},
+				type:'post',
+				dataType : 'json',
+				async : false,
+				error: function(jqXHR, textStatus, errorThrown) {
+			 		alert(textStatus, errorThrown);
+				},
+				success:function(retData){
+					var sendMobileCode = $("#sendMobileCode");
+					sendMobileCode.unbind("click");
+					if(retData == 'OK'){
+						     $("#countDown").show();
+			      			 $("#code").removeAttr("disabled");
+			      			 //调用倒计时
+							 timer = setTimeout("updateMobile.onTimer(" + interVal + ")",1000);
+							 //console.debug("start timer " + timer);
+					}else if(retData == "errorCode"){
+						alert("图形验证码错误");
+						$("#sendMobileCode").unbind("click").bind("click",function(){ updateMobile.sendSMSCode(); });
+						//$("#sendMobileCode").unbind("click").bind("click",function(){ sendSMSCode(); });
+					}else{
+							  sendMobileCode.attr("disabled", true);
+							  sendMobileCode.attr("class", "disabled-btn");
+							  var countDown = $("#countDown");
+							  countDown.html("发送短信频率过高，请稍等再试试");
+							  countDown.show();
+			      			  $("#code").attr("disabled",true);
+					}
+				}
+				});
+			return timer;
+		},
+
+		//倒计时, need cookies
+		onTimer: function (remains) {
+			var sendMobileCode = $("#sendMobileCode");
+			if (remains == 0) {
+				$("#timer").html(0);
+				$("#countDown").hide();
+				sendMobileCode.removeAttr("disabled");
+				sendMobileCode.attr("class", "ncbtn");
+				$("#sendMobileCode").unbind("click").bind("click",function(){ updateMobile.sendSMSCode(); });
+				//console.debug("stop timer " + timer);
+				wait = interVal;
+				window.clearTimeout(timer);
+			} else {
+				sendMobileCode.attr("disabled", true);
+				sendMobileCode.attr("class", "disabled-btn");
+				$("#timer").html(wait);
+				var remains = wait--;
+				timer = setTimeout("updateMobile.onTimer(" + remains +")",1000);
+			}
+		},
+
+		calRemainTime: 	function (){
+			  if(wait!= null && wait !=interVal){
+				   	var sendMobileCode = $("#sendMobileCode");
+					sendMobileCode.attr("disabled", true);
+					sendMobileCode.attr("class", "disabled-btn");
+					$("#countDown").show();
+		 			$("#code").removeAttr("disabled");
+		  			$("#sendMobileCode").unbind("click");
+					$("#timer").html(wait);
+				}else{
+					wait = interVal;
+				}
+			},
+
+		//更改手机成功
+		bindMobile: function (){
+			if(validateRandNum(contextPath))
+			{
+				if(updateMobile.verifySMSCode($("#code").val())){
+					$.ajax({
+						url: contextPath + "/i/updateMobile",
+						data:{"oldPassword":$("#oldPassword").val(),"userMobile":$("#userMobile").val(),"securityCode":$("#code").val()},
+						type:'post',
+						async : true,
+						error: function(jqXHR, textStatus, errorThrown) {
+						},
+						success:function(retData){
+							$("#rightContent").html(retData);
+						}
+					});
+				}else{
+					$("#code_error").text("短信验证码错误 或  验证码过时！");
+				}
+			}
+		},
+
+		//验证验证码是否正确
+		verifySMSCode: function (validateCode){
+			var result = false;
+			$.ajax({
+				url: contextPath + "/i/verifySMSCode",
+				data: {"validateCode": validateCode},
+				type: 'post',
+				dataType : 'json',
+				async : false,
+				error: function(jqXHR, textStatus, errorThrown) {
+				},
+				success:function(retData){
+					result = retData;
+					if(!retData){
+						 changeRandImg(contextPath);
+						 $("#randNum").val('');
+					}
+				}
+			});
+			return result;
+		},
+
+
+		/**检查手机号码是否唯一**/
+		checkPhone: function () {
+			var result = true;
+			$.ajax({
+					url: contextPath + "/isPhoneOnly",
+					data: {"phone":$("#userMobile").val()},
+					type:'post',
+					async : false, //默认为true 异步
+					error: function(jqXHR, textStatus, errorThrown) {
+						},
+					success:function(retData){
+						if('true' == retData){
+							result = false;
+						}
+					}
+				});
+			return result;
+		}
+
+}
+
+var toUpdateMail = {
+		doExecute: function(){
+			userCenter.changeSubTab("security");
+			$("#userEmail").bind('blur', function () {
+				var mail = $("#userEmail").val();
+				var emailError = $("#email_error");
+				$("#emailtext").hide();
+				if(!isEmail(mail)){
+					emailError.show();
+					emailError.text("请输入正确的邮箱格式");
+				}else if(!checkEmail($("#userEmail").val())){
+					emailError.show();
+					emailError.text("该邮箱已被使用，请更换其他邮箱");
+				}
+			});
+
+			$("#userEmail").bind('focus', function () {
+				$("#emailtext").show();
+				$("#email_error").hide();
+			});
+		},
+
+		//更改邮箱成功
+		sendNewMail: function (emailCode){
+			var mail = $("#userEmail").val();
+			var userName = userName;
+			if(validateRandNum(contextPath))
+			{
+				if(isEmail(mail)){
+					if(checkEmail()){
+						$.ajax({
+							url: contextPath + "/updateEmail",
+							data:{"oldPassword":$("#oldPassword").val(),"userEmail":$("#userEmail").val(),"emailCode":emailCode,"userName":userName,"securityCode":$("#securityCode").val()},
+							type:'post',
+							async : true,
+							error: function(jqXHR, textStatus, errorThrown) {
+						 		alert(textStatus, errorThrown);
+							},
+							success:function(retData){;
+								$("#middle").html(retData);
+							}
+						});
+					}else{
+						$("#email_error").show();
+						$("#email_error").text("邮箱已存在");
+						$("#userEmail").val("");
+						$("#randNum").val("");
+						//刷新验证码
+						changeRandImg(contextPath);
+					}
+				}else{
+					$("#email_error").show();
+					$("#email_error").text("请输入正确的邮箱格式");
+					$("#userEmail").val("");
+					$("#randNum").val("");
+					//刷新验证码
+					changeRandImg(contextPath);
+				}
+			}
+		}
+
+}
+
+var updatePassword = {
+		doExecute: function(){
+			//文本框绑定事件
+		    $("#newPassword").bind('keyup onfocus onblur', function () {
+			        var index = checkStrong(this.value);
+			        $("#strength").removeClass("icon-s-00");
+			        $("#strength").removeClass("icon-s-01");
+			        $("#strength").removeClass("icon-s-02");
+			        $("#strength").removeClass("icon-s-03");
+			        if(index == 4){
+			        	index = 3;
+			        }
+					$("#strength").addClass("icon-s-0" + index);
+					$("#passwordLevel").val(index);
+
+			    });
+
+		    $("#rePassword").bind('blur', function () {
+				   var newPassword = $("#newPassword").val();
+				   var rePassword = $("#rePassword").val();
+				   var rePasswordError = $("#rePassword_error");
+				  if(rePassword != newPassword){
+					  rePasswordError.show();
+					  rePasswordError.text("两次输入的密码不一致，请重新输入");
+				  }
+			  });
+
+			 $("#rePassword").bind('focus', function () {
+				  $("#rePassword_error").hide();
+			 });
+		},
+
+		//更新密码
+		updatePassword: function (emailCode, userName){
+				var userName = userName;
+			   var newPassword = $("#newPassword").val();
+			   var rePassword = $("#rePassword").val();
+			   var rePasswordError = $("#rePassword_error");
+			   var regx = /(?!.*[\u4E00-\u9FA5\s])(?!^[a-zA-Z]+$)(?!^[\d]+$)(?!^[^a-zA-Z\d]+$)^.{6,20}$/ ;
+			if(newPassword.length ==0){
+				$("#password_message").hide();
+				$("#password_error").show();
+				$("#password_error").text("请输入登录密码");
+				return;
+			}else if(rePassword == 0){
+				$("#rePassword_error").show();
+				$("#rePassword_error").text("请确认密码");
+				return;
+			}else if(newPassword.indexOf(" ") > -1){
+				$("#password_message").hide();
+				$("#password_error").show();
+				$("#password_error").text("登录密码不能包含空格");
+				return;
+			}else if(newPassword.length < 6 || newPassword.length > 20){
+				$("#password_message").hide();
+				$("#password_error").show();
+				$("#password_error").text("为了您的账号安全，密码长度在 6-20 个字符之间");
+				return;
+			}else if(!regx.test(newPassword)){
+				$("#password_message").hide();
+				$("#password_error").show();
+				$("#password_error").text("密码由6-20位字母、数字或符号两种及以上组成");
+				return;
+			}
+			if(validateRandNum(contextPath)){
+				if(rePassword == newPassword){
+					$.ajax({
+						url: contextPath + "/updatePassword",
+						data:{"oldPassword":$("#oldPassword").val(),"newPassword":$("#newPassword").val(),"securityCode":$("#securityCode").val(),"emailCode":emailCode,"userName":userName},
+						type:'post',
+						async : true,
+						error: function(jqXHR, textStatus, errorThrown) {
+					 		alert(textStatus, errorThrown);
+						},
+						success:function(retData){;
+							$("#content").html(retData);
+						}
+					});
+				}else{
+					rePasswordError.show();
+					rePasswordError.text("两次输入的密码不一致，请重新输入");
+				}
+			}
+		}
+}
+
+//密码检测密码强度
+function checkStrong(sValue) {
+	var modes = 0;
+	//正则表达式验证符合要求的
+	if (sValue.length < 1) return modes;
+	if (/\d/.test(sValue)) modes++; //数字
+	if (/[a-z]/.test(sValue)) modes++; //小写
+	if (/[A-Z]/.test(sValue)) modes++; //大写
+	if (/\W/.test(sValue)) modes++; //特殊字符
+
+	//逻辑处理
+	switch (modes) {
+	   case 1:
+	       return 1;
+	       break;
+	   case 2:
+	       return 2;
+	   case 3:
+	   case 4:
+	       return sValue.length < 12 ? 3 : 4
+	       break;
+	}
+}
+
+/**检查邮箱是否存在,除了自己以外**/
+function checkEmail(userEmail) {
+	var result = true;
+	$.ajax({
+		url: contextPath + "/i/isEmailOnly",
+		data: {"email":userEmail},
+		type:'post',
+		async : false, //默认为true 异步
+		error: function(jqXHR, textStatus, errorThrown) {
+		},
+		success:function(retData){
+			if('true' == retData){
+				result = false;
+			}
+		}
+	});
+	return result;
+}
+
+/**检查是否为邮箱形式**/
+function isEmail(str){
+	var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+	return reg.test(str);
+}
+
+/**检查是否为手机号码形式**/
+function isPhone(str){
+	var mobile = /^1\d{10}$/;
+	return mobile.test(str);
+}
+
+function bindPage(name,url) {
+	var jqElement = $("#"+ name);
+	jqElement.unbind("click").click(function() {
+		userCenter.loadPageByAjax(url);
+	});
+}
+
+
+function alertAddAddressDiag(id){
+  art.dialog.open(contextPath +  '/i/loadaddressOverlay/' + id,{
+  	width: 700,
+  	height:520,
+  	drag: true,
+  	resize: true,
+  	title: '添加收货地址',
+  	lock: false
+  	});
+}
+
+function delAddress(id){
+	art.dialog.confirm("确定要删除收货地址吗？", function () {
+		$.ajax({
+			"url":contextPath + "/i/deladdress/"+ id ,
+			type:'post',
+			async : true, //默认为true 异步
+			error: function(jqXHR, textStatus, errorThrown) {
+			},
+			success:function(result){
+				art.dialog.tips('删除收货地址成功');
+				refreshAddress();
+			}
+			});
+	});
+}
+
+function makeAddressDefault(id){
+art.dialog.confirm("确定要将该地址设置为默认地址？", function () {
+	$.ajax({
+		"url":contextPath + "/i/defaultaddress/"+ id ,
+		type:'post',
+		async : true, //默认为true 异步
+		error: function(jqXHR, textStatus, errorThrown) {
+		},
+		success:function(result){
+			art.dialog.tips('设置成功');
+			refreshAddress();
+		}
+		});
+});
+}
+
+//刷新页面
+function refreshAddress(){
+	$("#receiveaddress").click();
+}
+
+function pager(curPageNO){
+	userCenter.loadPageByAjax( "/i/receiveaddress?curPageNO=" + curPageNO);
+}
+
+function openHideForUsercenterLeft(){
+	$(document).delegate("#uc_left_nav h3 div","click", function(){
+		var $thisParent = $(this).parent();
+		var $thisNext = $(this).next();
+		if($thisParent.hasClass("open")){
+			$thisParent.removeClass("open");
+			$thisNext.hide();
+		}else{
+			$thisParent.addClass("open");
+			$thisNext.show();
+		}
+	});
+}
+
+function changeSubNavClass(jqElement) {
+	console.log('ccc===',jqElement);
+	$("#uc_left_nav h3").removeClass("focus");
+	$("#uc_left_nav h3 li").removeClass("focus");
+	jqElement.addClass("focus");
+	if(jqElement){
+		jqElement.parents('h3.open').addClass('active').siblings().removeClass('active')
+		let activeImgDom=jqElement.parents('h3.open').find('>div img')
+		if(activeImgDom.attr('src')&&activeImgDom.attr('src').indexOf('_active')){
+			let strArr=activeImgDom.attr('src').split('.')
+			activeImgDom.attr('src',`${strArr[0]}_active.${strArr[1]}`)
+		}
+	}
+}
+

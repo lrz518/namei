@@ -1,0 +1,114 @@
+#bd {
+    background: #3D3D3D;
+    color: #999999;
+}
+.infomain {
+     background: #000000;
+    border: 1px solid #2E2E2E;
+}
+.info_u_l {
+    background: #000000;
+}
+.tb-wrap .choose-list {
+    background-color: #1A1A1A;
+    border-bottom: 1px solid #2E2E2E;
+}
+.tb-wrap .tb-price {
+    background: #1A1A1A;
+}
+.tb-wrap .tb-price .price-item .num-box,.tb-wrap dd,.tb-wrap {
+    color: #999999;
+}
+.tb-sku .tb-con .table-sku td {
+    border-bottom: 1px solid #2E2E2E;
+    color: #999999;
+}
+.tb-wrap .tb-content .tb-sku {
+    /*border-top: 1px solid #2E2E2E;*/
+    border-bottom: 1px solid #2E2E2E;
+}
+.qjdlogo, .sidecell {
+    border-bottom: 1px solid #2E2E2E;
+}
+.amount-input {
+    background-color: #1A1A1A;
+    color: #999999;
+}
+.info_u_r .col-shop-btns a {
+    background: #AACD06;
+    border: 0;
+    color: #000;
+}
+.tb-wrap .choose-list .list-total {
+    color: #999999;
+}
+.sidebox {
+    background: #000;
+    border: 1px solid #2E2E2E;
+}
+.sidebox h3 {
+    background: #1A1A1A;
+    color: #999;
+}
+.detail {
+    background-color: #0D0D0D;
+}
+.tabcon {
+    background: #1A1A1A!important;
+    color: #999999;
+}
+.Review_Form .area1 {
+    background: #000000!important;
+    color: #999;
+}
+ .Review_Form {
+    margin-bottom: 0px;
+    border: 1px solid #2E2E2E;
+    color: #999999;
+    clear: both;
+}
+.info_u_r .col-shop-btns .col-btn {
+    background-color :#BA9B03;
+}
+.tb-btn-phonebuy a  {
+    background-color :#BA9B03;
+    color: #000;
+    border: 0;
+}
+.info_u_r .col-shop-btns {
+    color: #000;
+}
+.tb-btn-basket a {
+    border: 0;
+}
+.tb-btn-sku a:first-child {
+    height: 36px;
+    line-height: 36px;
+}
+.tb-btn-basket a {
+    color: #000;
+    background-color: rgb(0, 0, 0);
+}
+textarea#consultationContent:focus {
+    border-color: #8fbd20;
+}
+.tb-action {
+    clear: both;
+    padding: 10px 0 0 10px;
+    margin: 10px 0 0;
+}
+
+.tb-btn-sku a {
+    width: 120px;
+    border: 0;
+}
+.tb-btn-sku img.collection,img.mobile {
+    width: 24px;
+    vertical-align: middle;
+    margin: 5px;
+}
+a.collectionAndbuy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

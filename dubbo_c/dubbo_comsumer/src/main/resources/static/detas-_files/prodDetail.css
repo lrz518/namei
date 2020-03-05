@@ -1,0 +1,371 @@
+.tb-wrap {
+  color: #666;
+  padding: 0 0 10px;
+}
+.tb-wrap .tb-nav {
+  margin-bottom: 14px;
+  line-height: 18px;
+  background: #f8f8f8;
+  border: 1px solid #eee;
+}
+.tb-wrap .tb-nav .nav-item {
+  float: left;
+  line-height: 40px;
+  font-size: 14px;
+  min-width: 126px;
+  text-align: center;
+  border: 1px solid #eee;
+  border-width: 0 1px;
+  margin: -1px;
+  margin-left: 0;
+  margin-right: 0;
+  border-left: 0;
+}
+.tb-wrap .tb-nav .nav-item:hover {
+  color: #8fbd20;
+}
+.tb-wrap .tb-nav .nav-item:last-child {
+  border-right: 0;
+}
+.tb-wrap .tb-nav .nav-item.cur {
+  position: relative;
+  color: #8fbd20;
+  background: #fff;
+}
+.tb-wrap .tb-nav .nav-item.cur:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #8fbd20;
+}
+.tb-wrap .tb-tit {
+  float: left;
+  width: 65px;
+  padding: 8px 0 8px 15px;
+  color: #999;
+  line-height: 18px;
+}
+.tb-wrap .tb-con {
+  margin-left: 80px;
+}
+.tb-wrap .tb-price {
+  background: #f6f4f5;
+  padding: 10px 0 5px;
+}
+.tb-wrap .tb-price .tb-tit {
+  line-height: 26px;
+}
+.tb-wrap .tb-price .price-item {
+  margin: 5px 0;
+}
+.tb-wrap .tb-price .price-item .pri-box {
+  font-size: 18px;
+  float: left;
+  width: 33.33%;
+  color: #8fbd20;
+}
+.tb-wrap .tb-price .price-item .pri-box.cur {
+  font-weight: 700;
+}
+.tb-wrap .tb-price .price-item .pri-box .price {
+  font-size: 28px;
+  margin-left: 5px;
+}
+.tb-wrap .tb-price .price-item .num-box {
+  float: left;
+  width: 33.33%;
+  line-height: 42px;
+  color: #333;
+}
+.tb-wrap .tb-price .price-item .num-box .num {
+  margin-right: 5px;
+}
+
+.tb-wrap .tb-content .tb-sku {
+  position: relative;
+  padding: 10px 0;
+  /*border: 1px solid #f0f0f0;*/
+  border-width: 1px 0;
+}
+.tb-sku .tb-con {
+	overflow: hidden;
+    padding-right: 18px;
+    height: 100px;
+    width: 560px;
+    -moz-transition: all 2s;
+    -webkit-transition: all 2s;
+    -o-transition: all 2s;
+    transition: all 2s;
+}
+.tb-sku .tb-con .table-sku {
+  width: 550px;
+}
+.tb-sku .tb-con .table-sku td {
+  height: 44px;
+  border-bottom: 1px dotted #e5e5e5;
+  color: #333;
+}
+.tb-sku .tb-con .table-sku .name {
+  width: 160px;
+  padding-right: 10px;
+  font-weight: 700;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+}
+.tb-sku .tb-con .table-sku .name .img {
+  font-weight: 700;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+}
+.tb-sku .tb-con .table-sku .name .box-img {
+  display: block;
+  width: 32px;
+  height: 32px;
+  font-size: 0;
+}
+.tb-sku .tb-con .table-sku .name .box-img img {
+  width: 100%;
+  height: 100%;
+}
+.tb-sku .tb-con .table-sku .price {
+  width: 80px;
+  padding-right: 10px;
+}
+.tb-sku .tb-con .table-sku .count {
+  width: 110px;
+  padding-right: 35px;
+  text-align: right; 
+}
+.tb-sku .tb-con .table-sku .amount .amount-det {
+  position: relative;
+  width: 126px;
+  height: 28px;
+  line-height: 28px;
+  margin-left: 40px;
+}
+.tb-sku .tb-con .table-sku .amount .amount-det a {
+  float: left;
+  width: 26px;
+  height: 26px;
+  border: 1px solid #e5e5e5;
+  line-height: 26px;
+  overflow: hidden;
+  font-size: 16px;
+  color: #555;
+  font-weight: 600;
+  text-align: center;
+  font-family: arial;
+}
+.tb-sku .tb-con .table-sku .amount .amount-det .amount-down {
+  border-right: 0;
+}
+.tb-sku .tb-con .table-sku .amount .amount-det .limit {
+  color: #999;
+}
+.tb-sku .tb-con .table-sku .amount .amount-det .amount-input {
+  float: left;
+  width: 62px;
+  height: 22px;
+  line-height: 22px;
+  padding: 2px 0 2px 8px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #e5e5e5;
+  text-align: center;
+}
+.tb-sku .tb-con .table-sku .amount .amount-det .amount-up {
+  border-left: 0;
+}
+.tb-sku .tb-con .table-sku .amount .amount-det:hover .amount-input {
+  border-color: #8fbd20;
+}
+.tb-sku .tb-con .table-sku .amount .amount-det a:hover {
+  border-color: #8fbd20;
+}
+.tb-sku .tb-con .table-sku .amount .amount-not {
+  color: #999;
+  position: absolute;
+}
+.tb-wrap .tb-content .tb-expand {
+  display: block;
+  width: 46px;
+  height: 11px;
+  overflow: hidden;
+  border: 1px solid #e5e5e5;
+  border-top-color: #fff;
+  border-radius: 0 0 2px 2px;
+  margin-left: 80px;
+  position: relative;
+  z-index: 2;
+  margin-top: -1px;
+}
+.tb-wrap .tb-content .tb-expand .exp-arrow {
+  display: block;
+  width: 10px;
+  height: 5px;
+  margin-left: 18px;
+  position: relative;
+}
+.tb-wrap .tb-content .tb-expand .exp-arrow .arr-icon {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 0;
+  left: 0;
+  border-width: 5px 5px 0;
+  border-style: solid dashed dashed;
+  border-color: #888 transparent transparent;
+  border-radius: 2px;
+}
+.tb-wrap .tb-content .tb-expand .exp-arrow .arr-icon-bg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: -2px;
+  left: 0;
+  border-width: 5px 5px 0;
+  border-style: solid dashed dashed;
+  border-color: #fff transparent transparent;
+  border-radius: 2px;
+}
+.tb-wrap .choose-list {
+  height: 46px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #e5e5e5;
+}
+.tb-wrap .choose-list .list-total {
+  float: left;
+  height: 46px;
+  overflow: hidden;
+  padding-left: 94px;
+  line-height: 46px;
+  color: #8fbd20;
+}
+.tb-wrap .choose-list .list-total .item {
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 15px;
+  margin-right: 15px;
+}
+.tb-wrap .choose-list .list-total .item .num {
+  font-size: 20px;
+  margin-right: 5px;
+}
+.tb-wrap .choose-list .list-selected {
+  position: relative;
+  float: right;
+}
+.tb-wrap .choose-list .list-selected .list-link {
+  position: relative;
+  display: block;
+  width: 185px;
+  height: 46px;
+  border-left: 1px solid #e5e5e5;
+  border-right: 1px solid #f9f9f9;
+  line-height: 46px;
+  text-align: center;
+  font-size: 14px;
+  transition: all .2s ease-in;
+  -moz-transition: all .2s ease-in;
+  -webkit-transition: all .2s ease-in;
+  -o-transition: all .2s ease-in;
+}
+.tb-wrap .choose-list .list-selected .list-link:hover {
+  color: #8fbd20;
+}
+.tb-wrap .choose-list .list-selected .link-arr {
+  position: relative;
+  margin-left: 5px;
+  display: inline-block;
+  width: 10px;
+  height: 5px;
+  vertical-align: top;
+  margin-top: 22px;
+  transition: all .3s ease-in;
+  -moz-transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+  -o-transition: all .3s ease-in;
+}
+.tb-wrap .choose-list .list-selected .list-link .arr-icon {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 0;
+  left: 0;
+  border-width: 0 4px 4px;
+  border-style: dashed dashed solid;
+  border-color: transparent transparent #888;
+}
+.tb-wrap .choose-list .list-selected:hover .list-link .arr-icon {
+  border-color: transparent transparent #8fbd20;
+}
+.tb-wrap .choose-list .list-selected .list-link .arr-icon-bg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 2px;
+  left: 0;
+  border-width: 0 4px 4px;
+  border-style: dashed dashed solid;
+  border-color: transparent transparent #fff;
+}
+
+.tb-wrap .choose-list .list-selected.cur .list-link {
+  margin: -1px 0;
+  padding-top: 1px;
+  background-color: #fff;
+  border: 1px solid #d5d5d5;
+  border-top: 0 none;
+}
+.tb-wrap .choose-list .list-selected.cur .list-link .link-arr {
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.tb-wrap .choose-list .list-selected .list-info {
+  position: absolute;
+  z-index: 100;
+  bottom: 46px;
+  right: 0;
+  width: 637px;
+  border: 1px solid #d5d5d5;
+  background-color: #fff;
+  box-shadow: 0 -3px 3px -3px #d5d5d5;
+  max-height: 330px;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  display: none;
+}
+.tb-wrap .choose-list .list-selected.cur .list-info {
+  display: block;
+}
+.tb-wrap .choose-list .list-selected .list-info .table-list {
+  width: 100%;
+  color: #333;
+}
+.tb-wrap .choose-list .list-selected .list-info .table-list td {
+  border-bottom: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
+}
+.tb-wrap .choose-list .list-selected .list-info .table-list tr:last-child td {
+  border-bottom: 0;
+}
+.tb-wrap .choose-list .list-selected .list-info .table-list .prop {
+  width: 74px;
+  padding: 17px 10px;
+  font-weight: 700;
+}
+.tb-wrap .choose-list .list-selected .list-info .table-list .desc {
+  padding: 12px 10px;
+  border-right: 0 none;
+}
+.tb-wrap .choose-list .list-selected .list-info .table-list .desc .num-box .unit {
+  margin-left: 5px;
+}
+/* end 详情 */

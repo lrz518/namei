@@ -1,0 +1,70 @@
+.header-arrow {
+    width: 9px;
+    height: 5px;
+    margin-left: 3px;
+    margin-top: 13px;
+}
+
+.myGreenChoose:hover {
+    background-color: #212120;
+}
+
+.myGreenChoose-list {
+    position: absolute;
+    padding: 10px 0;
+    background-color: #212120;
+    font-size:12px;
+    font-family:MicrosoftYaHei;
+    /*font-weight:bold;*/
+    color: #999999;
+    line-height:10px;
+    width: 300px;
+    height: 180px;
+    /*display: grid;*/
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 30px 30px 30px 30px 30px 30px;
+    display: none;
+}
+
+.myGreenChoose-list a {
+    width: 60px;
+    line-height: 30px;
+    text-align: left;
+    color: #666;
+    padding: 0 20px;
+}
+
+.myGreenChoose-list-title {
+    color: #999999 !important;
+}
+
+.fr li {
+    padding: 0 2px !important;
+}
+
+.fr li a{
+    padding: 0 10px;
+    line-height: 30px;
+}
+
+.fr li a:hover {
+    background-color: #212120;
+    display: block;
+}
+
+.logout {
+    display: inline;
+}
+
+.logout:hover {
+    display: inline !important;
+    background-color: unset !important;
+}
+
+.myGreenChoose-list a:hover {
+    color: #DAB866;
+}
+
+.myGreenChoose-list-title:hover {
+    color: #DAB866 !important;
+}

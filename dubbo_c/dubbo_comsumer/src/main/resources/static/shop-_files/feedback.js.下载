@@ -1,0 +1,63 @@
+$().ready(function(){
+		$(".ls-toolbar-tab").hover(function(e){
+			$(this).addClass("z-ls-tbar-tab-hover");
+		},function(e){
+			$(this).removeClass("z-ls-tbar-tab-hover");
+			});
+		$(window).scroll(function(){
+			var top = jQuery(document).scrollTop();	
+				if(top==0){
+					$("#top").hide();		
+				}else{	  
+					$("#top").show();
+				}
+				return false; 
+		});
+		});
+	function feedback(){
+		art.dialog({
+			id: 'feedback',
+			title: '意见反馈',
+    	    content: '反馈内容<font color="red">(*必填)</font>：<br/><textarea rows="10" cols="42" placeholder="欢迎提出您在使用过程中遇到的问题或宝贵建议（400字以内），感谢您对的支持。" maxlength="200" id="text"></textarea><br/>'
+    	    	+'联系方式(电话、手机或者邮箱)：<br/><input type="text" id="mobile" maxlength="50" placeholder="请留下您的联系方式（50字内）" size="40"/>',
+			lock: true,
+			fixed: true,
+			okVal:'提交反馈',
+			ok: function () {
+			 	var content=$("#text").val();
+			 	var mobile=$("#mobile").val();
+			 	if(content==null||content==''||content==undefined){
+			 		art.dialog.tips("反馈内容不能为空");
+			 		return false;
+			 	}
+			 	if(mobile==null||mobile==''||mobile==undefined){
+			 		art.dialog.tips("联系方式不能为空");
+			 		return false;
+			 	}
+				$.ajax({
+					url: contextPath+"/userFeedBack/save/", 
+					data:{"content":content,"mobile":$("#mobile").val()},
+					type:'get',
+					async : true, //默认为true 异步   
+					dataType:'json',
+					error:function(data){
+					},   
+					success:function(data){
+						if(data=="OK"){
+							art.dialog.tips("提交成功");
+							return true;
+						}else {
+							art.dialog.tips(data);
+							return false;
+						}
+					}   
+				}); 
+			},
+		});
+	
+}
+	
+	function gotop(){
+		$('body,html').animate({scrollTop:0},1000);      
+		$("#top").hide();		
+	}
