@@ -1,0 +1,805 @@
+@charset "utf-8";
+/* CSS Document */
+
+.ncsc-head-layout {
+    background-color: #333;
+    width: 100%;
+    height: 72px;
+    zoom: 1;
+}
+.ncsc-head-layout .wrapper {
+    height: 72px;
+	  width: 1200px;
+    margin: auto;
+}
+.ncsc-head-layout .ncsc-admin {
+    font-size: 0;
+    *word-spacing: -1px;
+    display: inline-block;
+    *display: inline;
+    height: 56px;
+    padding: 8px;
+    float: right;
+    *zoom: 1;
+}
+.ncsc-head-layout .ncsc-admin dl, .ncsc-head-layout .ncsc-admin .pic {
+    vertical-align: top;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-align: right;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+.ncsc-head-layout .ncsc-admin dl {
+    color: #FFF;
+    padding-right: 16px;
+}
+.ncsc-head-layout .ncsc-admin dl dt {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+}
+.ncsc-head-layout .ncsc-admin dl dd {
+    font-size: 12px;
+    line-height: 16px;
+}
+.ncsc-head-layout .ncsc-admin .pic {
+    background-color: #FFF;
+    width: 56px;
+    height: 56px;
+}
+.ncsc-head-layout .ncsc-admin .pic img {
+    max-width: 56px;
+    height: 56px;
+}
+.ncsc-head-layout .center-logo {
+    /*!  */
+    line-height: 60px;
+    *word-spacing: -1px;
+    display: block;
+    width: 240px;
+    height: 60px;
+    float: left;
+    padding: 6px;
+    _padding: 0 6px;
+    _margin-top: 12px;
+}
+.ncsc-head-layout .center-logo img {
+    vertical-align: middle;
+    display: inline-block;
+    *display: inline;
+    max-width: 160px;
+    max-height: 60px;
+    border: medium none;
+}
+.ncsc-head-layout .center-logo h1 {
+    font: 16px/18px "microsoft yahei";
+    color: #FFF;
+    vertical-align: middle;
+    letter-spacing: normal;
+    word-spacing: normal;
+    display: inline-block;
+    *display: inline;
+    width: 72px;
+    height: 18px;
+    padding-left: 6px;
+    margin-left: 6px;
+    border-left: solid 1px #fff;
+}
+.ncsc-head-layout .ncsc-nav {
+    font-size: 0;
+    *word-spacing: -1px;
+    float: left;
+    height: 40px;
+    margin: 32px 0 0 50px;
+}
+.ncsc-head-layout .ncsc-nav li {
+    vertical-align: top;
+    letter-spacing: normal;
+    word-spacing: normal;
+    display: inline-block;
+    *display: inline;
+    text-align: center;
+    margin-right: 5px;
+    *zoom: 1;
+}
+.ncsc-head-layout .ncsc-nav li a {
+    font: normal 14px/30px "microsoft yahei";
+    color: #fff;
+    background-color: #e5004f;
+    display: block;
+    height: 30px;
+    padding: 5px 15px;
+}
+.ncsc-head-layout .ncsc-nav li a.current {
+    font-size: 16px;
+    font-weight: 600;
+    color: #e5004f;
+    background-color: #FFF;
+}
+.ncsc-layout{
+	width: 1200px;
+  margin: auto;
+}
+.alert {
+    color: #666;
+    background-color: #f9f9f9;
+    padding: 8px 35px 8px 14px;
+    margin: 20px auto;
+    border: 1px solid #e4e4e4;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.alert ul {
+    margin-bottom: 10px;
+	  margin-top: 5px;
+}
+.alert li {
+    margin: 4px 0;
+}
+.search-form {
+    color: #999;
+    width: 100%;
+	  border-collapse: collapse;
+    border-spacing: 0;
+}
+.search-form td {
+    text-align: left;
+    padding: 0 0 10px;
+}
+.search-form th {
+    font-size: 12px;
+    line-height: 22px;
+    text-align: right;
+    width: 55px;
+    padding: 0 8px 10px 0;
+    font-style: normal;
+    font-weight: normal;
+}
+.search-form th select,.search-form td select {
+    color: #666;
+    background-color: #FFF;
+    height: 30px;
+    vertical-align: middle;
+    *display: inline;
+    padding: 0 4px;
+    border: solid 1px #e4e4e4;
+    *zoom: 1;
+    outline: none;
+}
+.search-form th select option,.search-form td select option {
+    line-height: 20px;
+    display: block;
+    height: 20px;
+    padding: 4px;
+}
+.search-form .w160 {
+    width: 160px;
+}
+.search-form input.text {
+    width: 148px;
+    font: 12px/20px Arial;
+    color: #666;
+    background-color: #FFF;
+    vertical-align: top;
+    display: inline-block;
+    height: 20px;
+    padding: 4px;
+    border: solid 1px #e4e4e4;
+    outline: 0 none;
+}
+.search-form .w70 {
+    width: 70px;
+}
+.search-form .tc {
+    text-align: center !important;
+}
+.search-form .submit-border {
+    vertical-align: middle;
+    display: inline-block;
+    *display: inline;
+    margin: 0 2px;
+	  border: 1px solid;
+    border-color: #e4e4e4 #e4e4e4 #ccc #e4e4e4;
+    zoom: 1;
+}
+.search-form .submit-border input[type="submit"] {
+    font: 12px/28px "microsoft yahei";
+    color: #333;
+    background-color: #f9f9f9;
+    width: 64px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
+}
+
+.search-form .submit-border input[type="button"] {
+    font: 12px/28px "microsoft yahei";
+    color: #333;
+    background-color: #f9f9f9;
+    width: 64px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
+}
+
+
+.ncsc-default-table {
+    line-height: 20px;
+    width: 100%;
+    border-top: border-collapse: collapse;
+    clear: both;
+	  border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #e4e4e4;
+    border-bottom: 0;
+}
+.ncsc-default-table th {
+    line-height: 20px;
+    color: #333;
+    background-color: #f9f9f9;
+    text-align: center;
+    height: 20px;
+    padding: 8px 0;
+    border-bottom: solid 1px #e4e4e4;
+}
+.ncsc-default-table .w60{
+	width: 60px;
+}
+.ncsc-default-table .w150{
+	width: 150px;
+}
+.ncsc-default-table .w120{
+	width: 120px;
+}
+.ncsc-default-table td {
+    color: #666;
+    background-color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    border-right:1px solid #e4e4e4;
+    border-bottom: solid 1px #e4e4e4;
+}
+.ncsc-default-table .w70 {
+    width: 70px;
+}
+.ncsc-default-table .goods-info {
+    text-align: left;
+}
+.ncsc-default-table .goods-name {
+    line-height: 16px;
+    min-height: 16px;
+    max-height: 32px;
+    margin-bottom: 5px;
+	  border: none;
+}
+.ncsc-default-table .goods-spec {
+    color: #666;
+    line-height: 20px;
+}
+.ncsc-default-table .goods-type {
+    background-color: #ff875a;
+    color: #fff;
+    font-weight: 600;
+    line-height: 20px;
+    display: inline-block;
+    padding: 0 6px;
+}
+.ncsc-default-table .goods-thumb {
+    width: 60px;
+    height: 60px;
+}
+.ncsc-default-table .goods-thumb a {
+    display: block;
+}
+.ncsc-default-table .goods-thumb a img {
+    max-width: 60px;
+    max-height: 60px;
+	  border: medium none;
+    vertical-align: middle;
+}
+.ncsc-default-table .order-amount {
+    font: bold 12px/20px Verdana;
+    color: #e5004f;
+}
+.ncsc-default-table .goods-price {
+    color: #333;
+    font-weight: 600;
+}
+.ncsc-default-table td .pic-thumb {
+    line-height: 0;
+    background-color: #FFF;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    *display: block;
+    width: 60px;
+    height: 40px;
+    border: solid 1px #e4e4e4;
+    overflow: hidden;
+}
+.ncsc-default-table td .pic-thumb img {
+    max-width: 40px;
+    max-height: 40px;
+    margin-top: expression(32-this.height/2);
+    *margin-top: expression(16-this.height/2);
+}
+.ncsc-default-table tr .tl{
+	  text-align: left !important;
+}
+.ncsc-default-table td .goods-name dt {
+    font-size: 12px;
+    line-height: 16px;
+    color: #333;
+    text-overflow: ellipsis;
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    max-width: 320px !important;
+    height: 16px;
+    padding-bottom: 4px;
+    overflow: hidden;
+}
+.ncsc-default-table td .goods-name dt a {
+    color: #005EA6;
+}
+.nscs-table-handle span a {
+    color: #e5004f;
+    background-color: #FFF;
+    display: inline-block;
+    padding: 3px 5px;
+    margin: 1px;
+}
+.ncsc-default-table .pagination {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    padding: 15px 0;
+}
+.pagination ul {
+    font-size: 0;
+    *word-spacing: -1px;
+}
+.pagination li:first-child {
+    margin-right: 8px;
+}
+.pagination ul li {
+    *display: inline;
+    *zoom: 1;
+}
+.pagination ul li {
+    vertical-align: top;
+    letter-spacing: normal;
+    word-spacing: normal;
+    display: inline-block;
+    margin: 0 0 0 -1px;
+}
+.pagination li span {
+    font: 600 12px/20px Verdana, Tahoma, Arial;
+    color: #666;
+    background-color: #FFF;
+    text-align: center;
+    display: block;
+    min-width: 20px;
+    padding: 8px;
+    border: 1px solid #e4e4e4;
+    position: relative;
+    z-index: 1;
+}
+.pagination li:last-child {
+    margin-left: 8px;
+}
+.pagination li span.currentpage {
+    color: #FFF;
+    font-weight: bold;
+    background-color: #e5004f;
+    border-color: #e5004f;
+    position: relative;
+    z-index: 2;
+}
+.ncsc-default-table tbody th span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 30px;
+	  font-style: normal;
+	  font-weight: normal;
+}
+.ncsc-default-table .ml10{
+	margin-left: 10px;
+}
+.ncsc-default-table .ml20{
+	margin-left: 20px;
+}
+/*门店商品库存*/
+
+.dialog_wrapper {
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#3F000000', endColorstr='#3F000000');
+    background: rgba(0,0,0,0.25);
+    padding: 5px;
+}
+.dialog_body {
+    background-color: #fff;
+    border: solid 1px #e4e4e4;
+}
+.dialog_head {
+    background-color: #f9f9f9;
+    margin: 0;
+    border-bottom: solid 1px #e4e4e4;
+    position: relative;
+    z-index: auto;
+}
+.dialog_title {
+    line-height: 20px;
+    display: inline-block;
+    height: 20px;
+    padding: 5px 0 5px 10px;
+    border: none 0;
+}
+.dialog_title_icon {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+    color: #666;
+}
+.dialog_close_button {
+    font-family: Verdana;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    color: #666;
+    text-align: center;
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+.eject_con {
+    background-color: #FFF;
+    overflow: hidden;
+}
+.chain-goods-id {
+    display: block;
+    padding: 10px 10px 0 10px;
+    overflow: hidden;
+}
+.chain-goods-id .pic-thumb {
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+.chain-goods-id .pic-thumb img {
+    border: medium none;
+    vertical-align: middle;
+}
+.chain-goods-id dl {
+    float: left;
+    margin-left: 5px;
+}
+.chain-goods-id dt {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    color: #333;
+}
+.chain-goods-id dd {
+    line-height: 20px;
+    color: #666;
+}
+.eject_con .content {
+    padding: 10px;
+}
+.stock-table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+	  border: 1px solid #e4e4e4;
+	  border-width: 0 1px;
+}
+.stock-table thead th {
+    line-height: 20px;
+    color: #333;
+    background-color: #f9f9f9;
+    text-align: center;
+    height: 20px;
+    padding: 5px 10px;
+    border: solid #e4e4e4;
+    border-width: 1px 0;
+}
+.stock-table .w100{
+	width: 100px;
+}
+.stock-table .w50{
+	width: 50px;
+}
+.stock-table .tl{
+	text-align: left !important;
+}
+.stock-table tbody td {
+    color: #666;
+    text-align: center;
+    padding: 5px 10px;
+    border-bottom: solid 1px #e4e4e4;
+}
+.stock-table tbody td input[type="text"]{
+    font: 12px/20px Arial;
+    color: #666;
+    background-color: #FFF;
+    vertical-align: top;
+    display: inline-block;
+    height: 20px;
+    padding: 4px;
+    border: solid 1px #E6E9EE;
+    outline: 0 none;
+}
+.stock-table .w40{
+	width: 40px;
+}
+.eject_con .bottom {
+    background-color: #f9f9f9;
+    text-align: center;
+    padding: 10px 0 5px 0;
+    border-top: 1px solid #e4e4e4;
+    overflow: hidden;
+}
+.submit-border {
+    display: inline-block;
+    *display: inline;
+    border: solid 1px;
+    border-color: #e5004f;
+    zoom: 1;
+    border-radius: 3px;
+}
+.submit-border input[type="submit"] {
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
+    background-color: #e5004f;
+    display: block;
+    height: 30px;
+    padding: 0 20px 2px 20px;
+    border: 0;
+    cursor: pointer;
+}
+/*库存弹窗*/
+
+.order-handle {
+    display: block;
+    padding: 10px;
+}
+.order-handle .title {
+    margin-bottom: 5px;
+}
+.order-handle h3 {
+    line-height: 20px;
+    font-size: 16px;
+    height: 28px;
+    color: #000;
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 20px;
+	  font-style: normal;
+}
+.order-handle .no-pay {
+    color: #e5004f;
+    font-size: 14px;
+    line-height: 28px;
+    display: inline-block;
+	  font-family: "微软雅黑;"
+}
+.order-handle .no-pay strong {
+    font-weight: 600;
+    margin: 0 4px;
+	  font-size: 16px;
+}
+.order-handle label .text, .order-handle label .btn {
+    vertical-align: middle;
+    display: inline-block !important;
+}
+.order-handle label input[type="text"]{
+    font: 12px/20px Arial;
+    color: #666;
+    background-color: #fff;
+    height: 20px;
+    padding: 4px;
+    border: solid 1px #e4e4e4;
+    outline: 0 none;
+}
+.order-handle .w200 {
+    width: 200px;
+}
+.order-handle input[type="submit"]{
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 3px;
+    background-color: #e5004f;
+    display: block;
+    height: 30px;
+    padding: 0 20px 2px 20px;
+    border: 0;
+    cursor: pointer;
+}
+
+.order-handle input[type="button"]{
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 3px;
+    background-color: #e5004f;
+    display: block;
+    height: 30px;
+    padding: 0 20px 2px 20px;
+    border: 0;
+    cursor: pointer;
+}
+.order-handle p {
+    line-height: 20px;
+    margin-top: 5px;
+    color: #666;
+}
+.order-info {
+    display: block;
+    padding: 10px 0;
+}
+.order-info .tabs-nav {
+    background-color: #f9f9f9;
+    font-size: 0;
+    *word-spacing: -1px;
+    height: 37px;
+    padding: 5px 0 0 10px;
+    list-style: none outside none;
+}
+.order-info .tabs-nav li {
+    vertical-align: top;
+    letter-spacing: normal;
+    word-spacing: normal;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+.order-info .tabs-nav li a {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    color: #666;
+    text-align: center;
+    display: block;
+    height: 20px;
+    padding: 8px 19px;
+    margin: 1px 1px 0 1px;
+}
+.order-info .tabs-nav li.tabs-selected a {
+    background-color: #FFF;
+    color: #000;
+    border: solid #e4e4e4;
+    margin: 0;
+    border-width: 1px 1px 0 1px;
+}
+.order-info dl {
+    line-height: 20px;
+    font-size: 0;
+    *word-spacing: -1px;
+    display: block;
+    margin-top: 10px;
+}
+.order-info dl dt, .order-info dl dd {
+    font-size: 12px;
+    vertical-align: middle;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-align: center;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+.order-info dl dt {
+    width: 14%;
+    text-align: right;
+    padding-right: 1%;
+    color: #999;
+}
+.order-info dl dd {
+    width: 85%;
+    text-align: left;
+    color: #000;
+}
+/*订单弹窗*/
+
+
+
+.ncs-chain-show {
+    display: block;
+    padding: 10px;
+}
+.ncs-chain-show dl {
+    font-size: 0;
+    *word-spacing: -1px;
+    margin-bottom: 10px;
+}
+.ncs-chain-show dt, .ncs-chain-show dd {
+    font-size: 12px;
+    vertical-align: top;
+    letter-spacing: normal;
+    word-spacing: normal;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+.ncs-chain-show dt {
+    font-size: 14px;
+    line-height: 28px;
+    margin-right: 10px;
+}
+.ncs-chain-show dd select {
+    margin-right: 4px;
+    color: #777;
+    background-color: #FFF;
+    height: 30px;
+    vertical-align: middle;
+    *display: inline;
+    padding: 0 4px;
+    border: solid 1px #E6E9EE;
+    *zoom: 1;
+}
+.ncs-chain-show dd select option {
+    line-height: 20px;
+    display: block;
+    height: 20px;
+    padding: 4px;
+}
+.ncs-chain-list {
+    background: #f9f9f9;
+    min-height: 300px;
+    border: solid 1px #e4e4e4;
+}
+.ncs-chain-list ul {
+    padding: 10px;
+	  list-style: none outside none;
+}
+.ncs-chain-list ul li {
+    line-height: 20px;
+    background-color: #FFF;
+    padding: 5px 5px 5px 15px;
+    margin-bottom: 10px;
+    border: solid 1px #e4e4e4;
+    border-radius: 5px;
+}
+.ncs-chain-list ul li .handle {
+    line-height: 20px;
+    height: 20px;
+    float: right;
+    padding: 10px;
+    border-left: solid 1px #e4e4e4;
+}
+.ncs-chain-list ul li h5 i {
+    background: url(../images/store-loc.png) no-repeat;
+    vertical-align: middle;
+    display: inline-block;
+    *display: inline;
+    width: 10px;
+    height: 14px;
+    margin-right: 5px;
+    *zoom: 1;
+}
+.ncs-chain-list ul li a {
+    color: #2272c8;
+	  font-style: normal;
+    font-weight: normal;
+}
+.ncs-chain-list ul li p {
+    color: #666;
+}
+/*门店选择弹窗*/
+
+/*门店管理*/

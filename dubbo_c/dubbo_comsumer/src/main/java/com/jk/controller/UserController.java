@@ -1,8 +1,6 @@
 package com.jk.controller;
 
 
-
-
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSONObject;
 import com.jk.model.UserModel;
@@ -10,28 +8,22 @@ import com.jk.service.UserService;
 import com.jk.util.CheckSumBuilder;
 import com.jk.util.HttpClientUtil;
 import com.jk.util.Md5Util;
-
-
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-
-
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.slf4j.Logger;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-import org.slf4j.LoggerFactory;
 @Controller
 @RequestMapping("user")
 @ComponentScan(basePackages = {"com.jk.*"})
@@ -46,7 +38,7 @@ public class UserController {
     @RequestMapping("register")
     @ResponseBody
     public
-    void   register(UserModel  userModel){
+    void   register(UserModel userModel){
          userModel.setUserimg(null);
          userModel.setMember(1);
          userModel.setAddress(null);
@@ -61,7 +53,7 @@ public class UserController {
     @ResponseBody
     public
     String  checkUser(String  useriphone){
-        UserModel  userIphone = userService.findUserPhone(useriphone);
+        UserModel userIphone = userService.findUserPhone(useriphone);
         if(userIphone  != null){
             return  "aail";
         }
@@ -82,7 +74,7 @@ public class UserController {
                 result.put("msg","验证码错误，请重新输入");
                 return  result;
             }
-            UserModel  findUserPhone = userService.findUserPhone(useriphone);
+            UserModel findUserPhone = userService.findUserPhone(useriphone);
             if(findUserPhone ==  null){
                 result.put("code" , 3);
                 result.put("msg","账号或密码错误，请重新输入");
@@ -146,7 +138,7 @@ public class UserController {
     public
     Map loginUser(UserModel userModel, HttpSession session) {
     HashMap<String, Object> result = new HashMap<>();
-    UserModel  userInfo = userService.findUserPhone(userModel.getUseriphone());
+    UserModel userInfo = userService.findUserPhone(userModel.getUseriphone());
     if(userInfo == null){
         result.put("code",1);
         result.put("msg","账号不存在");

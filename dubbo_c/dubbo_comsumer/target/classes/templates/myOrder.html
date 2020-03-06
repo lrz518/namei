@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{/js/jquery.min1.10.2.js}" src="../static/js/jquery.min1.10.2.js"></script>
+
+    <script th:src="@{/js/bootstrap3/js/bootstrap.js}" src="../static/js/bootstrap3/js/bootstrap.js"></script>
+    <link th:href="@{/js/bootstrap3/css/bootstrap.css}" href="../static/js/bootstrap3/css/bootstrap.css"
+          rel="stylesheet"/>
+
+    <!--table-->
+    <script th:src="@{/js/bootstrap-table/bootstrap-table.js}"
+            src="../static/js/bootstrap-table/bootstrap-table.js"></script>
+
+    <link th:href="@{/js/bootstrap-table/bootstrap-table.css}"
+          rel="stylesheet" href="../static/js/bootstrap-table/bootstrap-table.css"/>
+
+    <!-- 时间 -->
+    <script src="../js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="../js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <h3  class="text-primary">我的订单</h3>
+        </div>
+    </div>
+</nav>
+<div class="panel-body">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="inputState" class="col-sm-2 control-label">订单状态</label>
+            <div class="col-sm-3">
+                <select class="form-control" id="inputState">
+                    <option value="3">所有订单</option>
+                    <option value="1">未付款</option>
+                    <option value="2">已付款</option>
+                </select>
+            </div>
+            <label for="inputTime" class="col-sm-2 control-label">时间</label>
+            <div class="col-sm-3">
+                <div class="input-group" id="inputTime">
+                    <input type="text" class="form-control date"  id="startTime">
+                    <div class="input-group-addon">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control date"  id="endTime">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <input onclick="saverMyOrder()" type="button" class="btn btn-info btn-lg btn-block" value="查询">
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="table" id="myOrderTable" ></div>
+
+<div id="alipay">
+    <form name="punchout_form" method="post" action="https://openapi.alipaydev.com/gateway.do?charset=utf-8&method=alipay.trade.page.pay&sign=hkZpiUZfSHt5M9G000%2FRJ3A51hz3Ux1B3k5n1AxjhbJEhgiSaMJH6X5%2B92dVdeErCDqsOPvYWiO8v1jBAIfUE0ayYKENrHMLbfB9h5TOV2fyFyxduHQail92Tb%2FazV7ucCW2yxN6wfjpy1doUfjHkOCAD6FNwpk1eJ6crHTeIfc1GS%2BJwUPl2rLWhsxEQByS6cyhUT%2Bk%2BYPnGtRVASIIw1Nuv5sGQsyAwrISOhlvPhNifbF9jrj9vJgrnZe8HgfmUdQs4fU%2F2B%2FAFUVR%2FgWqoAd640%2FL8qqIpmyjgok%2FjY6grGHcXRzkngZ0MlD0scOAXz1tzOR1JiEURF6JDj%2B1rg%3D%3D&return_url=http%3A%2F%2Flocalhost%3A8080%2Falipay%2FalipayReturnNotice&notify_url=http%3A%2F%2Flocalhost%3A8080%2Falipay%2FalipayNotifyNotice&version=1.0&app_id=2016101900721202&sign_type=RSA2&timestamp=2020-03-05+16%3A23%3A47&alipay_sdk=alipay-sdk-java-3.7.4.ALL&format=json">
+        <input type="hidden" name="biz_content" value="{&quot;out_trade_no&quot;:&quot;b975a3f7-ce4c-4a39-90df-3d9db1172536&quot;,&quot;total_amount&quot;:&quot;33&quot;,&quot;subject&quot;:&quot;2016101900721202&quot;,&quot;body&quot;:&quot;&quot;,&quot;timeout_express&quot;:&quot;1c&quot;,&quot;product_code&quot;:&quot;FAST_INSTANT_TRADE_PAY&quot;}">
+        <input type="submit" value="立即支付" style="display:none" >
+    </form>
+</div>
+</body>
+<script th:inline="javascript" type="text/javascript">
+    /* <![CDATA[ */
+    $(function(){
+        /*加载我的订单信息*/
+        findMyuOrderTable();
+    })
+    /*加载我的订单信息*/
+    function findMyuOrderTable(){
+        $('#myOrderTable').bootstrapTable({
+            toolbar:'#toolbar',
+            url:'../shoppingCart/findMyuOrderTable',//获取数据地址
+            method:'post',
+            contentType:'application/x-www-form-urlencoded',//post请求按照表单方式
+            //pagination:false, //是否展示分页
+            //search:true,//是否显示搜索框
+            //searchText:'大约在冬季',//初始化搜索文字
+            showColumns:false,//是否显示 内容列下拉框
+            showToggle:false,//是否显示 切换试图（table/card）按钮
+            showPaginationSwitch:false,//是否显示 数据条数选择框
+            showRefresh:true,//是否显示刷新按钮
+            detailView:false,//设置为 true 可以显示详细页面模式。
+            showFooter:false,//是否显示列脚
+            clickToSelect: false, //是否启用点击选中行
+            //sidePagination:'server',//分页方式：client客户端分页，server服务端分页（*
+            striped:true,
+            queryParams:function(){
+                var inputState = $('#inputState').val();
+                var startTime = $('#startTime').val();
+                var endTime = $('#endTime').val();
+                return {
+                    /*page: this.pageNumber,
+                    rows: this.pageSize,*/
+                    inputState:inputState,
+                    startTime:startTime,
+                    endTime:endTime
+                };
+            },
+            columns:[
+                /*{checkbox:true},*/
+                {field:'orderNumber',title:'订单编号',align:'center',width:150},
+                {field:'commodity_name',title:'商品名称',align:'center',width:150},
+                {field:'commodity_img',title:'商品图片',align:'center',width:150,formatter:function(data){
+                        return "<img src="+data+" width='150' height='100'>";;
+                    }},
+                {field:'commodity_price',title:'总价（元）',width:150,align:'center'},
+                {field:'commodity_number',title:'数量',width:150,align:'center',formatter:function(data){
+                        return "*"+data;
+                    }},
+                {field:'commodity_price',title:'订单金额（元）',width:150,align:'center'},
+                {field:'ordertime',title:'下单日期',width:150},
+                {field:'minarea',title:'收货地址',width:150},
+                {field:'phone',title:"电话号码",width:150},
+                {field:'name',title:"收件人",width:150},
+                {field:'state',title:'订单状态',width:150,formatter:function (data) {
+                        if(data == 1){
+                            return "未付款";
+                        }
+                        if(data == 2){
+                            return "已付款";
+                        }
+                    }},
+                {field:'zc',title:'交易操作',width:150,align:'center',
+                    formatter:function(value,row,index){
+                        if(row.state == 1){
+                            return "<button type='button' class='btn btn-success' onclick='paymentAlipay("+row.commodity_price+")'>订单支付</button>"+
+                                "<button type='button' class='btn btn-warning' onclick='deleteMyOrderById("+row.orderNumber+")'>取消订单</button>";
+                        }
+                    }},
+            ]
+        });
+        $('.date').datetimepicker({
+            language: 'zh-CN',//显示中文
+            format: 'yyyy-mm-dd hh:ii:ss',//显示格式
+            minView: "month",//设置只显示到月份
+            initialDate: new Date(),//初始化当前日期
+            autoclose: true,//选中自动关闭
+            todayBtn: true//显示今日按钮
+        });
+    }
+    
+    //点击查询
+    function saverMyOrder(){
+        $('#myOrderTable').bootstrapTable("refresh");
+    }
+
+    //取消订单
+    function deleteMyOrderById(orderNumber) {
+        $.post('../shoppingCart/deleteMyOrderById',{orderNumber:orderNumber},function(data){
+            saverMyOrder();
+        })
+    }
+
+    //订单支付
+    function paymentAlipay(commodity_price){
+        $.post('../alipay/paymentAlipay',{price:commodity_price},function(data){
+            $("#alipay").append(data);
+        })
+    }
+
+    /* ]]> */
+</script>
+</html>

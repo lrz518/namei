@@ -1,8 +1,8 @@
 package com.jk.controller;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.jk.model.CommonModel;
 import com.jk.service.CommodityService;
+import jdk.nashorn.internal.ir.annotations.Reference;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -17,7 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("commod")

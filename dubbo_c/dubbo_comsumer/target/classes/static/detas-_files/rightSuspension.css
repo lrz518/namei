@@ -1,0 +1,116 @@
+ul { list-style: none; }
+.ls-toolbar-wrap {
+	position: fixed;
+	_position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 0;
+	width: 0px;
+	height: 100%; 
+}
+.ls-toolbar-tabs {
+	position: absolute;
+	top: 50%;
+	left: -35px;
+	width: 35px;
+	margin-top: -61px;
+}
+.ls-toolbar-tab {
+	position: relative;
+	width: 35px;
+	height: 35px;
+	margin-bottom: 1px;
+	cursor: pointer;
+	background-color: rgb(51, 51, 51);
+	-webkit-border-radius: 3px 0 0 3px;
+	-moz-border-radius: 3px 0 0 3px;
+	border-radius: 3px 0 0 3px;
+}
+.ls-toolbar-tab .tab-ico {
+	width: 34px;
+	height: 35px;
+	margin-left: 1px;
+	position: relative;
+	z-index: 2;
+	background-color: rgb(51, 51, 51);
+	_display: block;
+}
+.ls-toolbar-tab .tab-text {
+	width: 62px;
+	height: 35px;
+	line-height: 35px;
+	color: #fff;
+	text-align: center;
+	font-family: "微软雅黑";
+	position: absolute;
+	z-index: 1;
+	left: 35px;
+	top: 0;
+	background-color: rgb(51, 51, 51);
+	-webkit-border-radius: 3px 0 0 3px;
+	-moz-border-radius: 3px 0 0 3px;
+	border-radius: 3px 0 0 3px;
+	-webkit-transition: left .3s ease-in-out .1s;
+	-moz-transition: left .3s ease-in-out .1s;
+	transition: left .3s ease-in-out .1s;
+	_display: none;
+}
+.ls-toolbar-tab .tab-ico, .ls-toolbar-tabs .tabs-tip .ico {
+	display: inline-block;
+	background-image: url(../images/ls-toolbar-icons.png);
+	background-image: url(../images/ls-toolbar-icons-png.png);
+	background-repeat: no-repeat;
+}
+.ls-tbar-tab-cart .tab-ico {
+	background-position: -50px 0;
+}
+.ls-tbar-tab-follow .tab-ico {
+	background-position: -50px -50px;
+}
+.ls-tbar-tab-history .tab-ico {
+	background-position: -50px -100px;
+}
+.ls-tbar-tab-jimi .tab-ico {
+	background-position: -50px -150px;
+}
+.z-ls-tbar-tab-hover .tab-text {
+	left: -60px;
+	background-color: #8fbd20;
+	_display: block;
+}
+.z-ls-tbar-tab-hover, .z-ls-tbar-tab-hover .tab-ico {
+	background-color: #8fbd20;
+}
+.ls-toolbar-footer {
+    position: absolute;
+    bottom: -1px;
+    width: 100%;
+    left: -35px;
+}
+.ls-tbar-tab-top .tab-ico {
+    background-position: -50px -250px;
+}
+.ls-toolbar-footer .ls-toolbar-tab .tab-text {
+    width: 62px;
+}
+
+.ls-tbar-tab-feedback .tab-ico{
+	 background-position: -50px -300px;
+}
+
+.ls-toolbar {
+	z-index:9999;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    border-right: 6px solid rgb(51, 51, 51);
+    -webkit-transition: right .3s ease-in-out 0s;
+    -moz-transition: right .3s ease-in-out 0s;
+    transition: right .3s ease-in-out 0s;
+}
+.qqCustomer li{
+	padding-top: 10px;
+}
+.qqCustomer li:hover{border: 1px solid #fff;}

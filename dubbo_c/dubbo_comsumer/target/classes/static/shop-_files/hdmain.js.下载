@@ -1,0 +1,61 @@
+$(document).ready(function() {
+	try {
+		 $("#_keyword").autocomplete(contextPath+'/seach/suggest',{
+				     max: 10,    //列表里的条目数
+				     minChars:1,    //自动完成激活之前填入的最小字符
+				     multiple: false,
+				     matchCase:true,
+				     matchContains: true,//是否全匹配, 如数据中没有此数据,将无法输入
+				     autoFill: false,    //自动填充
+				     dataType: "json",
+				     extraParams:{keyword:function(){
+				    	    var search=stripscript($.trim($('#_keyword').val()));
+				    	    return search;
+				        }
+				     },
+			         parse: function(data) {
+		              return $.map(data, function(row) {
+		                  return {
+		                      data: row,
+		                      value: row,
+		                      result: row
+		                  }
+		              });
+		           },
+		             formatItem: function(row, i, max) {
+							return  "<span class='ac_name'>"+row + "</span>";
+						},
+						formatMatch: function(row, i, max) {
+							return row + " ";
+						},
+						formatResult: function(row) {
+							return row;
+						}
+			    }).result(function(e, item) {
+		      });
+			} catch (e) {
+				console.log(e);
+		}
+}); 
+
+function searchproduct(){
+	 var keyword = document.getElementById("_keyword").value;
+	 if(keyword == undefined || keyword==null ||keyword ==""){
+	    alert("请输入搜索关键字！");
+	    return false;
+	}
+	 document.getElementById("searchform").submit();	
+}
+
+
+
+function stripscript(s){   
+    var pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]");
+    var rs = "";   
+    for (var i = 0; i < s.length; i++) {   
+         rs = rs+s.substr(i, 1).replace(pattern, '');   
+    }   
+    rs = rs.replace(/<(script)[\S\s]*?\1>|<\/?(a|img)[^>]*>/gi, "");
+    return rs;   
+}  
+		

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.ShoppingCartMapper" >
+
+  <select id="findMyuOrderTable" resultType="Map">
+    SELECT tmo.state,tmo.ordertime,tmo.orderNumber,tmo.commodity_img,tmo.commodity_name,tmo.commodity_price,tmo.commodity_number,tua.name,tua.city,tua.area,tua.minarea,tua.phone from t_user tu
+    LEFT JOIN t_myOrder tmo on tu.id = tmo.user_id
+    LEFT JOIN t_useraddressdata tua on tmo.addressdataid = tua.addressdataid
+    where tu.id = #{userId}
+    <include refid="myOrder"></include>
+  </select>
+  <sql id="myOrder">
+    <if test="startTime != null and startTime != ''">
+        and tmo.ordertime >= #{startTime}
+    </if>
+    <if test="startTime != null and startTime != ''">
+      and tmo.ordertime &lt;= #{endTime}
+    </if>
+    <if test="inputState != null and inputState != 3">
+      and tmo.state = #{inputState}
+    </if>
+  </sql>
+</mapper>

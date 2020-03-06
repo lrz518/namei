@@ -1,0 +1,80 @@
+$(document).ready(function() {
+	if ('false'==flag) {
+		$(".menu").mouseover(function(){
+			var _this = $(this);
+			 _this.addClass("on");
+		});
+		$(".menu").mouseout(function(){
+			var _this = $(this);
+			 _this.removeClass("on");
+		});
+	}
+	
+	
+    //首页判断
+    if($("#isIndex").val()) {
+        //判断是否显示分类导航
+        $(".showlist").show();
+    }else{
+    	$(".showlist").hide();
+    	
+    	 $(".menu-cate").bind("mouseover",function(){
+    		 $(this).find(".showlist").show();
+         });
+         $(".menu-cate").bind("mouseout",function(){
+        	 $(this).find(".showlist").hide();
+         });
+    	   
+    };
+    
+    var t = "";
+    $(".showlist dl ").mouseover(function(){
+    	var cur = $(this);
+        var index = $(this).index();
+        $(cur).children("dd").show();
+        $(cur).siblings().find("dd").hide();
+    }).mouseout(function(){
+    	$(this).find("dd").hide();
+    });
+    
+    $(".menu-drop").mouseover(function(){
+    	$(this).addClass("z-menu-drop-open")
+    }).mouseout(function(){
+    	$(this).removeClass("z-menu-drop-open")
+    });
+    
+    
+    calUnreadMsgCount();
+});
+
+
+function calUnreadMsgCount() {
+    //刷新top bar 区域
+    $.ajax({
+        type : "GET",
+        url : contextPath + "/calUnreadMsgCount",
+        data : null,
+        success : function(response) {
+            $("#header-msgCount").html(response);
+        }
+    });
+};
+
+
+
+//首页展开隐藏
+function proSort(){
+    var st = 0;
+    $(".showlist").bind("mouseenter",function(){
+        st = setTimeout(function(){
+        },200);
+    });
+    $(".showlist").bind("mouseleave",function(){
+        clearTimeout(st);
+    });
+};
+
+function hideSort(){
+    $(".showlist dl dd").hide();
+};
+var contextPath="${contextPath}";		
