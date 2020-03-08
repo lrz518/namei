@@ -78,7 +78,6 @@ public class ShoppingCartController {
         List<CommodityModel> loadUserShoppingCartInfo = new ArrayList<>();
         if (true) {//已登录
             //从Redis获取用户购物车信息
-
             CommodityModel commodityModel = new CommodityModel();
             commodityModel.setCommodity_id(1);
             commodityModel.setCommodity_img("https://1907lq.oss-cn-beijing.aliyuncs.com/img/shopping/u5122.png");
