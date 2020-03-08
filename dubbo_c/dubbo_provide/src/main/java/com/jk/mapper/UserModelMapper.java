@@ -1,19 +1,19 @@
 package com.jk.mapper;
 
 import com.jk.model.UserModel;
+import org.apache.ibatis.annotations.Insert;
+
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserModelMapper {
-    int deleteByPrimaryKey(Integer userid);
 
-    int insert(UserModel record);
 
-    int insertSelective(UserModel record);
 
-    UserModel selectByPrimaryKey(Integer userid);
+    @Select("select * from  t_user where  useriphone = #{value}")
+    UserModel findUserPhone(String useriphone);
 
-    int updateByPrimaryKeySelective(UserModel record);
-
-    int updateByPrimaryKey(UserModel record);
+    void register(UserModel userModel);
 }

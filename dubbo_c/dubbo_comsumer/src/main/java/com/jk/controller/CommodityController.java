@@ -1,8 +1,8 @@
 package com.jk.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.jk.model.CommonModel;
 import com.jk.service.CommodityService;
-import jdk.nashorn.internal.ir.annotations.Reference;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -17,10 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("commod")
@@ -33,7 +30,7 @@ public class CommodityController {
 
     /*查看solr数据*/
     @RequestMapping("solrquery")
-    public @ResponseBody Map<String, Object> search(  String solrvalue){
+    public @ResponseBody Map<String, Object> search( String solrvalue){
         Map<String,Object> map1 =  new HashMap<>();
         try {
             SolrQuery params = new SolrQuery();
@@ -141,6 +138,14 @@ public class CommodityController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("id",id);
         modelAndView.setViewName("detas-");
+        return  modelAndView;
+    }
+
+    @RequestMapping("tiaoshou")
+    public @ResponseBody  ModelAndView tiaoshou(){
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("index");
         return  modelAndView;
     }
     /*查对应商品*/

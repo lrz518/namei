@@ -1,6 +1,8 @@
 package com.jk.controller;
 
 
+
+
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSONObject;
 import com.jk.model.UserModel;
@@ -8,22 +10,28 @@ import com.jk.service.UserService;
 import com.jk.util.CheckSumBuilder;
 import com.jk.util.HttpClientUtil;
 import com.jk.util.Md5Util;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+
+
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.slf4j.Logger;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import org.slf4j.LoggerFactory;
 @Controller
 @RequestMapping("user")
 @ComponentScan(basePackages = {"com.jk.*"})
@@ -38,7 +46,7 @@ public class UserController {
     @RequestMapping("register")
     @ResponseBody
     public
-    void   register(UserModel userModel){
+    void   register(UserModel  userModel){
          userModel.setUserimg(null);
          userModel.setMember(1);
          userModel.setAddress(null);
@@ -53,7 +61,7 @@ public class UserController {
     @ResponseBody
     public
     String  checkUser(String  useriphone){
-        UserModel userIphone = userService.findUserPhone(useriphone);
+        UserModel  userIphone = userService.findUserPhone(useriphone);
         if(userIphone  != null){
             return  "aail";
         }
@@ -74,7 +82,7 @@ public class UserController {
                 result.put("msg","验证码错误，请重新输入");
                 return  result;
             }
-            UserModel findUserPhone = userService.findUserPhone(useriphone);
+            UserModel  findUserPhone = userService.findUserPhone(useriphone);
             if(findUserPhone ==  null){
                 result.put("code" , 3);
                 result.put("msg","账号或密码错误，请重新输入");
@@ -138,7 +146,7 @@ public class UserController {
     public
     Map loginUser(UserModel userModel, HttpSession session) {
     HashMap<String, Object> result = new HashMap<>();
-    UserModel userInfo = userService.findUserPhone(userModel.getUseriphone());
+    UserModel  userInfo = userService.findUserPhone(userModel.getUseriphone());
     if(userInfo == null){
         result.put("code",1);
         result.put("msg","账号不存在");
@@ -158,66 +166,67 @@ public class UserController {
 
 
     //跳转到登陆页面
-    @RequestMapping("toLogin")
+    @RequestMapping("/toLogin")
+    @ResponseBody
     public ModelAndView toLogin() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("/login");
+        ModelAndView mv = new ModelAndView("login");
+
         return mv;
     }
     //跳转到验证码登陆页面
     @RequestMapping("smsLogin")
     public ModelAndView smsLogin() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("/smslogin");
+        mv.setViewName("smslogin");
         return mv;
     }
     //跳转到注册页面
     @RequestMapping("toRegister")
     public ModelAndView toRegister() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("/register");
+        mv.setViewName("register");
         return mv;
     }
     //跳转到发货时间页面
     @RequestMapping("toDeliver")
     public ModelAndView toDeliver() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("/deliver");
+        mv.setViewName("deliver");
         return mv;
     }
     //跳转到商品问题页面
     @RequestMapping("toCommodity")
     public ModelAndView toCommodity() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("/commodity");
+        mv.setViewName("commodity");
         return mv;
     }
     //跳转到售后退款页面
     @RequestMapping("toSale")
     public ModelAndView toSale() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("/sale");
+        mv.setViewName("sale");
         return mv;
     }
     //跳转到售后退款页面
     @RequestMapping("toAaa")
     public ModelAndView toAaa() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("/aaa");
+        mv.setViewName("aaa");
         return mv;
     }
     //跳转到运费支付页面
     @RequestMapping("toFreight")
     public ModelAndView toFreight() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("/freight");
+        mv.setViewName("freight");
         return mv;
     }
     //跳转到支付问题页面
     @RequestMapping("toPayment")
     public ModelAndView toPayment() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("/payment");
+        mv.setViewName("payment");
         return mv;
     }
 }

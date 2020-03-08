@@ -6,6 +6,9 @@
       <module fileurl="file://$PROJECT_DIR$/dubbo_common/dubbo_common.iml" filepath="$PROJECT_DIR$/dubbo_common/dubbo_common.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo_comsumer/dubbo_comsumer.iml" filepath="$PROJECT_DIR$/dubbo_comsumer/dubbo_comsumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo_provide/dubbo_provide.iml" filepath="$PROJECT_DIR$/dubbo_provide/dubbo_provide.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo_provide/src/main/main.iml" filepath="$PROJECT_DIR$/dubbo_provide/src/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo_comsumer/src/main/main1.iml" filepath="$PROJECT_DIR$/dubbo_comsumer/src/main/main1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo_common/src/main/main2.iml" filepath="$PROJECT_DIR$/dubbo_common/src/main/main2.iml" />
     </modules>
   </component>
 </project>
